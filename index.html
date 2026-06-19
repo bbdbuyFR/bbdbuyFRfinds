@@ -6,302 +6,239 @@
     <title>BBDBUY FR FINDS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class'
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .modal { display: none; }
         .modal.active { display: flex; }
-        
-        .dark select {
-            background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24Hz' fill='none'/></svg>");
-        }
-        html:not(.dark) select {
-            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24Hz' fill='none'/></svg>");
-        }
         select {
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
+            background-repeat: no-repeat; background-position: right 8px center;
+            -webkit-appearance: none; appearance: none;
         }
+        .dark select { background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
+        html:not(.dark) select { background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
 </head>
-<body class="font-sans antialiased bg-white text-gray-900 dark:bg-[#121212] dark:text-gray-200 transition-colors duration-200">
+<body class="font-sans antialiased bg-white text-gray-900 dark:bg-[#121212] dark:text-gray-200 transition-colors duration-300">
 
-    <header class="bg-gray-100 dark:bg-[#1a1a1a] p-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-300 dark:border-gray-800 sticky top-0 z-40 gap-4 transition-colors duration-200">
+    <header class="bg-gray-100 dark:bg-[#1a1a1a] p-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-300 dark:border-gray-800 sticky top-0 z-40 gap-4">
         
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
             <div class="text-center sm:text-left">
-                <span class="text-xl font-bold tracking-wider text-gray-900 dark:text-white block">BBDBUY FR FINDS</span>
-                <span class="text-xs text-gray-500 dark:text-gray-400">Les meilleurs liens !</span>
+                <span class="text-xl font-bold tracking-wider text-gray-900 dark:text-white block uppercase">BbdBuy FR Finds</span>
+                <span class="text-[10px] text-gray-500 dark:text-gray-400 font-medium">LES MEILLEURS LIENS !</span>
             </div>
             
             <div class="flex items-center space-x-3">
-                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#5865F2] rounded-xl flex items-center justify-center text-white text-xl hover:scale-105 transition-transform" title="Discord">
+                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#5865F2] rounded-xl flex items-center justify-center text-white text-xl hover:scale-110 transition-all shadow-lg" title="Discord">
                     <i class="fa-brands fa-discord"></i>
                 </a>
-                <a href="#" target="_blank" class="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-white text-xl border border-gray-800 hover:scale-105 transition-transform" title="TikTok">
+                <a href="#" target="_blank" class="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-white text-xl border border-gray-700 hover:scale-110 transition-all shadow-lg" title="TikTok">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
-                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-[#ff9900] rounded-xl flex flex-col items-center justify-center text-black font-extrabold text-[9px] leading-tight hover:scale-105 transition-transform" title="BbdBuy">
-                    <span class="text-[10px] tracking-tighter">BBD</span>
-                    <span class="text-[9px] tracking-tighter bg-black text-[#ff9900] px-0.5 rounded">BUY</span>
+                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-[#ff9900] rounded-xl flex flex-col items-center justify-center text-black font-extrabold text-[9px] leading-tight hover:scale-110 transition-all shadow-lg" title="S'inscrire">
+                    <span>BBD</span><span class="bg-black text-[#ff9900] px-0.5 rounded-[2px]">BUY</span>
                 </a>
             </div>
         </div>
 
-        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
-            <input type="text" id="search" placeholder="Rechercher un produit..." class="bg-white dark:bg-[#2a2a2a] text-sm text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 w-full sm:w-44 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center md:justify-end">
+            <input type="text" id="search" placeholder="Rechercher..." class="bg-white dark:bg-[#2a2a2a] text-sm text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 w-full sm:w-40 focus:ring-2 focus:ring-blue-500 outline-none">
             
-            <select id="filter-staff" class="bg-white dark:bg-[#2a2a2a] text-sm text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg pl-4 pr-8 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+            <select id="filter-staff" class="bg-white dark:bg-[#2a2a2a] text-xs border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 outline-none">
                 <option value="tous">Tous les articles</option>
-                <option value="staff">Déjà acheté par le Staff</option>
+                <option value="staff">Acheté par le Staff</option>
             </select>
 
-            <select id="filter-vendeur" class="bg-white dark:bg-[#2a2a2a] text-sm text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg pl-4 pr-8 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
-                <option value="tous">Tous les vendeurs</option>
-                <option value="ccoo">CCOO</option>
-                <option value="jhy">JHY</option>
-                <option value="mr q">Mr Q</option>
-                <option value="xinstore">XINSTORE</option>
+            <select id="filter-vendeur" class="bg-white dark:bg-[#2a2a2a] text-xs border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 outline-none">
+                <option value="tous">Vendeurs</option>
+                <option value="ccoo">CCOO</option><option value="jhy">JHY</option>
+                <option value="mr q">Mr Q</option><option value="xinstore">Xinstore</option>
                 <option value="football fire">Football Fire</option>
             </select>
 
-            <select id="filter-categorie" class="bg-white dark:bg-[#2a2a2a] text-sm text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg pl-4 pr-8 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
-                <option value="toutes">Toutes les catégories</option>
-                <option value="PULL">PULL</option>
-                <option value="BAS">BAS</option>
-                <option value="CHAUSSURES">CHAUSSURES</option>
-                <option value="ACCESSOIRES">ACCESSOIRES</option>
-                <option value="T-SHIRT">T-SHIRT</option>
-                <option value="MANTEAU">MANTEAU</option>
+            <select id="filter-categorie" class="bg-white dark:bg-[#2a2a2a] text-xs border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 outline-none">
+                <option value="toutes">Catégories</option>
+                <option value="PULL">PULL</option><option value="BAS">BAS</option>
+                <option value="CHAUSSURES">CHAUSSURES</option><option value="ACCESSOIRES">ACCESSOIRES</option>
+                <option value="T-SHIRT">T-SHIRT</option><option value="MANTEAU">MANTEAU</option>
             </select>
 
-            <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-[#2a2a2a] border border-gray-300 dark:border-gray-700 flex items-center justify-center text-amber-500 dark:text-yellow-400 hover:scale-105 transition-all">
-                <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+            <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-[#2a2a2a] border border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all hover:scale-105 shadow-sm">
+                <i id="theme-icon" class="text-lg"></i>
             </button>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto p-6">
-        <div id="content-area" class="space-y-10"></div>
+    <main class="max-w-7xl mx-auto p-6 min-h-screen">
+        <div id="content-area" class="space-y-12"></div>
     </main>
 
     <div id="welcome-modal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-[#161b22] p-6 rounded-xl max-w-md w-full text-center relative border border-gray-200 dark:border-[#30363d] shadow-2xl transition-colors duration-200">
-            <button onclick="closeWelcomeModal()" class="absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white text-xl">&times;</button>
+        <div class="bg-white dark:bg-[#161b22] p-6 rounded-2xl max-w-md w-full text-center relative border border-gray-200 dark:border-[#30363d] shadow-2xl">
+            <button onclick="closeWelcomeModal()" class="absolute top-3 right-4 text-gray-400 hover:text-red-500 text-2xl transition-colors">&times;</button>
+            <h3 class="text-xl font-bold mb-2 text-blue-500">REJOINS BBDBUY !</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-wider">Inscris-toi maintenant pour ton pack de coupons !</p>
+            <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="block w-full bg-blue-500 text-white font-bold py-3 rounded-xl mb-6 hover:bg-blue-600 transition-all uppercase shadow-lg shadow-blue-500/20">S'inscrire ici</a>
             
-            <h3 class="text-xl font-bold mb-2 tracking-wide text-[#38bdf8]">REJOINS BBDBUY !</h3>
-            <p class="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Inscris-toi dès maintenant sur BbdBuy pour obtenir ton pack de coupons.</p>
-            
-            <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="block w-full bg-[#38bdf8] text-black font-bold py-3 rounded-lg mb-4 hover:bg-[#0ea5e9] transition-colors text-sm uppercase tracking-wide shadow-md">S'inscrire ici</a>
-            
-            <div class="mb-4 p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 rounded-xl text-left flex gap-3 items-start">
-                <div class="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xs shrink-0 shadow-sm mt-0.5">
-                    <i class="fa-solid fa-circle-info"></i>
-                </div>
-                <div>
-                    <span class="text-xs font-bold text-blue-700 dark:text-blue-400 block mb-0.5">Articles "Acheté par le Staff"</span>
-                    <p class="text-[11px] text-blue-600 dark:text-blue-300/90 leading-normal">Pour les articles avec le tag <strong>acheté par le staff</strong>, il est possible pour vous de nous demander des photos des articles car on les a achetés et reçus pour avoir d'autres photos dans différents angles et de voir le rendu porté !</p>
-                </div>
+            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl text-left border border-blue-200 dark:border-blue-800 flex gap-4">
+                <i class="fa-solid fa-circle-info text-blue-500 text-xl mt-1"></i>
+                <p class="text-[11px] text-blue-800 dark:text-blue-300 leading-relaxed">
+                    <strong>Vérification Staff :</strong> Les articles marqués du badge <span class="text-blue-500">Staff</span> ont déjà été achetés par notre équipe. 
+                    Vous pouvez rejoindre notre Discord pour demander des photos réelles ou des photos de l'article porté !
+                </p>
             </div>
 
-            <div class="flex items-center justify-center space-x-2 text-xs text-gray-500 border-t border-gray-200 dark:border-gray-800 pt-3">
-                <input type="checkbox" id="dont-show-again" class="rounded bg-gray-100 dark:bg-gray-900 border-gray-300 dark:border-gray-700 cursor-pointer">
-                <label for="dont-show-again" class="cursor-pointer select-none">Ne plus afficher</label>
+            <div class="mt-6 flex items-center justify-center space-x-2 text-[10px] text-gray-400 uppercase font-bold border-t border-gray-100 dark:border-gray-800 pt-4">
+                <input type="checkbox" id="dont-show-again" class="rounded border-gray-300 dark:bg-gray-800 dark:border-gray-700">
+                <label for="dont-show-again">Ne plus afficher</label>
             </div>
         </div>
     </div>
 
     <div id="product-modal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-[#1c1c1c] p-6 rounded-xl max-w-md w-full text-center relative border border-gray-200 dark:border-gray-800 shadow-2xl transition-colors duration-200">
+        <div class="bg-white dark:bg-[#1c1c1c] p-6 rounded-2xl max-w-md w-full text-center relative border border-gray-200 dark:border-gray-800 shadow-2xl transition-all">
+            <h3 id="modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Nom du produit</h3>
+            <p id="modal-meta" class="text-[10px] text-gray-400 uppercase font-bold mb-6 tracking-widest"></p>
             
-            <h3 id="modal-title" class="text-xl font-bold mb-1 text-gray-900 dark:text-white">Nom du produit</h3>
-            <p id="modal-meta" class="text-xs text-gray-500 dark:text-gray-400 mb-4">Catégorie : PULL • Vendeur : LJC</p>
-            
-            <div id="modal-staff-box" class="hidden mb-5 p-3.5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50 rounded-xl text-left flex gap-3 items-start">
-                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-sm shrink-0 shadow-sm mt-0.5">
-                    <i class="fa-solid fa-circle-info"></i>
-                </div>
-                <div>
-                    <span class="text-xs font-bold text-blue-700 dark:text-blue-400 block mb-0.5">Photos réelles disponibles !</span>
-                    <p class="text-[11px] text-blue-600 dark:text-blue-300/90 leading-normal">Sur les articles avec le tag <strong>acheté par le staff</strong>, il est possible pour vous de nous demander des photos des articles car on les a achetés et reçus pour avoir d'autres photos dans différents angles et de voir le rendu porté.</p>
+            <div id="modal-staff-box" class="hidden mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl text-left border border-blue-100 dark:border-blue-900/50 flex gap-4 animate-pulse">
+                <i class="fa-solid fa-circle-info text-blue-500 text-xl mt-1"></i>
+                <div class="space-y-1">
+                    <span class="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-tighter">Article déjà reçu par le Staff !</span>
+                    <p class="text-[11px] text-blue-800 dark:text-blue-200 leading-normal">
+                        Nous avons cet article en main ! Rejoignez notre Discord et <strong>mentionnez un membre du staff</strong> pour voir des photos portées ou sous différents angles.
+                    </p>
                 </div>
             </div>
 
             <div class="space-y-3">
-                <a id="modal-btn-agent" href="#" target="_blank" class="block w-full bg-[#38bdf8] text-black font-bold py-3 rounded-lg hover:bg-[#0ea5e9] transition-colors text-sm shadow-sm">
-                    Ouvrir le lien BBD
-                </a>
-                <a id="modal-btn-source" href="#" target="_blank" class="block w-full bg-gray-200 dark:bg-[#2a2a2a] text-gray-900 dark:text-white font-bold py-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-300 dark:hover:bg-[#333] transition-colors text-sm">
-                    Ouvrir le lien Weidian
-                </a>
+                <a id="modal-btn-agent" href="#" target="_blank" class="block w-full bg-blue-500 text-white font-bold py-3.5 rounded-xl hover:bg-blue-600 transition-all shadow-md">Ouvrir le lien BBD</a>
+                <a id="modal-btn-source" href="#" target="_blank" class="block w-full bg-gray-100 dark:bg-[#2a2a2a] text-gray-900 dark:text-white font-bold py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-200 transition-all">Ouvrir le lien Source</a>
             </div>
             
-            <button onclick="closeProductModal()" class="mt-5 text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors block mx-auto underline">Fermer</button>
+            <button onclick="closeProductModal()" class="mt-6 text-xs text-gray-400 hover:text-red-500 font-bold uppercase transition-colors">Fermer la fenêtre</button>
         </div>
     </div>
 
     <script>
         let tousLesProduits = [];
 
-        // Gestion Thème
-        const themeToggleBtn = document.getElementById('theme-toggle');
+        // --- GESTION DU MODE SOMBRE ---
+        const themeBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
-        const htmlElement = document.documentElement;
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        
-        if (currentTheme === 'dark') {
-            htmlElement.classList.add('dark');
-            themeIcon.className = 'fa-solid fa-sun';
-        } else {
-            htmlElement.classList.remove('dark');
-            themeIcon.className = 'fa-solid fa-moon';
+        const html = document.documentElement;
+
+        function updateThemeIcon() {
+            if (html.classList.contains('dark')) {
+                themeIcon.className = 'fa-solid fa-sun text-yellow-400';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.className = 'fa-solid fa-moon text-amber-600';
+                localStorage.setItem('theme', 'light');
+            }
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                themeIcon.className = 'fa-solid fa-moon';
-                localStorage.setItem('theme', 'light');
-            } else {
-                htmlElement.classList.add('dark');
-                themeIcon.className = 'fa-solid fa-sun';
-                localStorage.setItem('theme', 'dark');
-            }
+        // Charger theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') html.classList.remove('dark');
+        updateThemeIcon();
+
+        themeBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            updateThemeIcon();
         });
 
         // Pop-up Bienvenue
         window.addEventListener('DOMContentLoaded', () => {
-            const cachePopUp = localStorage.getItem('hideWelcomeModal');
-            if (!cachePopUp) {
-                setTimeout(() => { document.getElementById('welcome-modal').classList.add('active'); }, 2000); 
+            if (!localStorage.getItem('hidePopUp')) {
+                setTimeout(() => { document.getElementById('welcome-modal').classList.add('active'); }, 1500);
             }
         });
 
         function closeWelcomeModal() {
-            if (document.getElementById('dont-show-again').checked) {
-                localStorage.setItem('hideWelcomeModal', 'true');
-            }
+            if (document.getElementById('dont-show-again').checked) localStorage.setItem('hidePopUp', 'true');
             document.getElementById('welcome-modal').classList.remove('active');
         }
 
-        // Fetch des données
+        // Chargement JSON
         fetch('produits.json')
-            .then(response => response.json())
-            .then(data => {
-                tousLesProduits = data;
-                filtrerEtAfficher();
-            })
-            .catch(err => console.error("Erreur JSON:", err));
+            .then(res => res.json())
+            .then(data => { tousLesProduits = data; updateGrid(); })
+            .catch(err => console.error(err));
 
-        // Filtrage global
-        function filtrerEtAfficher() {
-            const recherche = document.getElementById('search').value.toLowerCase();
-            const filtreStaff = document.getElementById('filter-staff').value;
-            const vendeurSelectionne = document.getElementById('filter-vendeur').value.toLowerCase();
-            const categorieSelectionnee = document.getElementById('filter-categorie').value;
+        function updateGrid() {
+            const search = document.getElementById('search').value.toLowerCase();
+            const staff = document.getElementById('filter-staff').value;
+            const vendor = document.getElementById('filter-vendeur').value.toLowerCase();
+            const cat = document.getElementById('filter-categorie').value;
 
-            const produitsFiltres = tousLesProduits.filter(p => {
-                const matchTexte = p.nom.toLowerCase().includes(recherche);
-                const matchVendeur = (vendeurSelectionne === 'tous') || (p.vendeur.toLowerCase() === vendeurSelectionne);
-                const matchCategorie = (categorieSelectionnee === 'toutes') || (p.categorie === categorieSelectionnee);
-                const matchStaff = (filtreStaff === 'tous') || (p.acheteParStaff === true);
-                return matchTexte && matchVendeur && matchCategorie && matchStaff;
+            const filtered = tousLesProduits.filter(p => {
+                const matchSearch = p.nom.toLowerCase().includes(search);
+                const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
+                const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
+                const matchCat = (cat === 'toutes') || (p.categorie === cat);
+                return matchSearch && matchStaff && matchVendor && matchCat;
             });
 
-            genererGrille(produitsFiltres);
+            renderGrid(filtered);
         }
 
-        // Grille de rendu
-        function genererGrille(produits) {
-            const conteneurPrincipal = document.getElementById('content-area');
-            conteneurPrincipal.innerHTML = ''; 
+        function renderGrid(produits) {
+            const area = document.getElementById('content-area');
+            area.innerHTML = '';
+            
+            const groups = {};
+            produits.forEach(p => { if(!groups[p.categorie]) groups[p.categorie] = []; groups[p.categorie].push(p); });
 
-            if (produits.length === 0) {
-                conteneurPrincipal.innerHTML = '<p class="text-center text-gray-500 dark:text-gray-400 pt-10">Aucun produit ne correspond à vos critères.</p>';
-                return;
-            }
-
-            const groupes = {};
-            produits.forEach(prod => {
-                if (!groupes[prod.categorie]) {
-                    groupes[prod.categorie] = [];
-                }
-                groupes[prod.categorie].push(prod);
-            });
-
-            for (const nomCategorie in groupes) {
+            for (const name in groups) {
                 const section = document.createElement('section');
-                
-                const titre = document.createElement('h2');
-                titre.className = "text-xl font-bold mb-4 text-gray-500 dark:text-gray-400 tracking-wide uppercase border-b border-gray-300 dark:border-gray-800 pb-2";
-                titre.innerText = nomCategorie;
-                section.appendChild(titre);
+                section.innerHTML = `<h2 class="text-sm font-black mb-6 text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] border-l-4 border-blue-500 pl-4">${name}</h2>`;
+                const grid = document.createElement('div');
+                grid.className = "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6";
 
-                const grille = document.createElement('div');
-                grille.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4";
-
-                groupes[nomCategorie].forEach(prod => {
-                    const carte = document.createElement('div');
-                    carte.className = "bg-gray-50 dark:bg-[#1c1c1c] rounded-lg overflow-hidden border border-gray-300 dark:border-gray-800 cursor-pointer hover:border-gray-400 dark:hover:border-gray-600 hover:scale-[1.02] transition-all relative flex flex-col justify-between shadow-sm";
-                    carte.onclick = () => openProductModal(prod);
-                    
-                    const badgeStaffHtml = prod.acheteParStaff 
-                        ? `<div class="absolute top-2 right-2 bg-[#5865F2] text-[10px] font-bold px-2 py-1 rounded-lg text-white shadow-md z-10 flex items-center gap-1"><i class="fa-brands fa-discord"></i> Staff</div>` 
-                        : '';
-
-                    carte.innerHTML = `
-                        <div class="relative">
-                            <div class="absolute top-2 left-2 bg-[#2ecc71] text-xs font-extrabold px-3 py-1.5 rounded-xl text-white shadow-md z-10">${prod.prix}</div>
-                            ${badgeStaffHtml}
-                            <img src="${prod.image}" class="w-full h-40 object-cover bg-gray-200 dark:bg-neutral-800" alt="${prod.nom}" loading="lazy">
-                            <div class="p-3">
-                                <h4 class="font-semibold text-sm truncate text-gray-900 dark:text-white" title="${prod.nom}">${prod.nom}</h4>
-                                <div class="flex flex-wrap gap-1.5 mt-2">
-                                    <span class="text-[10px] bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 px-2 py-0.5 rounded font-bold uppercase">${prod.categorie}</span>
-                                    <span class="text-[10px] bg-gray-200 dark:bg-neutral-800 text-gray-600 dark:text-gray-400 px-2 py-0.5 rounded font-bold uppercase">${prod.vendeur}</span>
-                                </div>
+                groups[name].forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = "bg-gray-50 dark:bg-[#1c1c1c] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] hover:shadow-xl transition-all relative flex flex-col";
+                    card.onclick = () => openModal(p);
+                    card.innerHTML = `
+                        <div class="relative aspect-square">
+                            <span class="absolute top-3 left-3 bg-[#2ecc71] text-white text-[10px] font-black px-2 py-1 rounded-lg z-10 shadow-sm">${p.prix}</span>
+                            ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-[#5865F2] text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 shadow-sm flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
+                            <img src="${p.image}" class="w-full h-full object-cover bg-gray-200 dark:bg-neutral-800" loading="lazy">
+                        </div>
+                        <div class="p-4 flex-1">
+                            <h4 class="font-bold text-xs truncate mb-3 text-gray-900 dark:text-white uppercase tracking-tight">${p.nom}</h4>
+                            <div class="flex gap-2">
+                                <span class="text-[8px] bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 px-2 py-1 rounded font-black uppercase">${p.categorie}</span>
+                                <span class="text-[8px] bg-gray-200 dark:bg-neutral-800 text-gray-500 dark:text-gray-400 px-2 py-1 rounded font-black uppercase">${p.vendeur}</span>
                             </div>
                         </div>
                     `;
-                    grille.appendChild(carte);
+                    grid.appendChild(card);
                 });
-
-                section.appendChild(grille);
-                conteneurPrincipal.appendChild(section);
+                section.appendChild(grid); area.appendChild(section);
             }
         }
 
-        function openProductModal(prod) {
-            document.getElementById('modal-title').innerText = prod.nom;
-            document.getElementById('modal-meta').innerText = `Catégorie : ${prod.categorie.toUpperCase()} • Vendeur : ${prod.vendeur.toUpperCase()}`;
-            document.getElementById('modal-btn-agent').href = prod.lienAgent;
-            document.getElementById('modal-btn-source').href = prod.lienSource;
+        function openModal(p) {
+            document.getElementById('modal-title').innerText = p.nom;
+            document.getElementById('modal-meta').innerText = `${p.categorie} • ${p.vendeur}`;
+            document.getElementById('modal-btn-agent').href = p.lienAgent;
+            document.getElementById('modal-btn-source').href = p.lienSource;
             
-            // Affichage conditionnel de l'alerte informationnelle
             const staffBox = document.getElementById('modal-staff-box');
-            if (prod.acheteParStaff === true) {
-                staffBox.classList.remove('hidden');
-            } else {
-                staffBox.classList.add('hidden');
-            }
+            if (p.acheteParStaff) staffBox.classList.remove('hidden'); else staffBox.classList.add('hidden');
 
             document.getElementById('product-modal').classList.add('active');
         }
 
-        function closeProductModal() {
-            document.getElementById('product-modal').classList.remove('active');
-        }
+        function closeProductModal() { document.getElementById('product-modal').classList.remove('active'); }
 
-        document.getElementById('search').addEventListener('input', filtrerEtAfficher);
-        document.getElementById('filter-staff').addEventListener('change', filtrerEtAfficher);
-        document.getElementById('filter-vendeur').addEventListener('change', filtrerEtAfficher);
-        document.getElementById('filter-categorie').addEventListener('change', filtrerEtAfficher);
+        document.getElementById('search').addEventListener('input', updateGrid);
+        document.getElementById('filter-staff').addEventListener('change', updateGrid);
+        document.getElementById('filter-vendeur').addEventListener('change', updateGrid);
+        document.getElementById('filter-categorie').addEventListener('change', updateGrid);
     </script>
 </body>
 </html>
