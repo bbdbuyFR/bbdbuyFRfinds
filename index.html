@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBDBUY FR FINDS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { darkMode: 'class' }
+        tailwind.config = { 
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,56 +24,63 @@
             background-repeat: no-repeat; background-position: right 8px center;
             -webkit-appearance: none; appearance: none;
         }
+        /* Style des étiquettes de prix façon screenshot */
+        .price-tag {
+            background: #10b981; /* Vert Émeraude */
+            color: white;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        /* Tag de catégorie et vendeur style screenshot */
+        .item-tag {
+            background: #2a2a2a;
+            color: #a1a1aa;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
         .dark select { background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
-        html:not(.dark) select { background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
 </head>
-<body class="font-sans antialiased bg-white text-gray-900 dark:bg-[#121212] dark:text-gray-200 transition-colors duration-300">
+<body class="font-sans antialiased bg-white text-gray-900 dark:bg-[#0f172a] dark:text-gray-200 transition-colors duration-300">
 
-    <header class="bg-gray-100 dark:bg-[#1a1a1a] p-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-300 dark:border-gray-800 sticky top-0 z-40 gap-4">
-        
+    <header class="bg-gray-100 dark:bg-[#1e293b] p-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-300 dark:border-gray-800 sticky top-0 z-40 gap-4">
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
             <div class="text-center sm:text-left">
-                <span class="text-xl font-bold tracking-wider text-gray-900 dark:text-white block uppercase">BbdBuy FR Finds</span>
-                <span class="text-[10px] text-gray-500 dark:text-gray-400 font-medium">LES MEILLEURS LIENS !</span>
+                <span class="text-xl font-extrabold tracking-tight text-gray-900 dark:text-white block uppercase">BbdBuy FR Finds</span>
+                <span class="text-[10px] text-emerald-500 font-bold tracking-widest uppercase">Select Premium Links</span>
             </div>
             
             <div class="flex items-center space-x-3">
-                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#5865F2] rounded-xl flex items-center justify-center text-white text-xl hover:scale-110 transition-all shadow-lg" title="Discord">
+                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#4f46e5] rounded-xl flex items-center justify-center text-white text-xl hover:scale-110 transition-all shadow-lg shadow-indigo-500/20">
                     <i class="fa-brands fa-discord"></i>
                 </a>
-                <a href="#" target="_blank" class="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-white text-xl border border-gray-700 hover:scale-110 transition-all shadow-lg" title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-[#ff9900] rounded-xl flex flex-col items-center justify-center text-black font-extrabold text-[9px] leading-tight hover:scale-110 transition-all shadow-lg" title="S'inscrire">
-                    <span>BBD</span><span class="bg-black text-[#ff9900] px-0.5 rounded-[2px]">BUY</span>
+                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-emerald-500 rounded-xl flex flex-col items-center justify-center text-white font-extrabold text-[9px] leading-tight hover:scale-110 transition-all">
+                    <span>BBD</span><span>BUY</span>
                 </a>
             </div>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center md:justify-end">
-            <input type="text" id="search" placeholder="Rechercher..." class="bg-white dark:bg-[#2a2a2a] text-sm text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 w-full sm:w-40 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="text" id="search" placeholder="Rechercher..." class="bg-white dark:bg-[#1e293b] text-sm border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-2 w-full sm:w-40 focus:ring-2 focus:ring-emerald-500 outline-none">
             
-            <select id="filter-staff" class="bg-white dark:bg-[#2a2a2a] text-xs border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 outline-none">
+            <select id="filter-staff" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
                 <option value="tous">Tous les articles</option>
                 <option value="staff">Acheté par le Staff</option>
             </select>
 
-            <select id="filter-vendeur" class="bg-white dark:bg-[#2a2a2a] text-xs border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 outline-none">
-                <option value="tous">Vendeurs</option>
-                <option value="ccoo">CCOO</option><option value="jhy">JHY</option>
-                <option value="mr q">Mr Q</option><option value="xinstore">Xinstore</option>
-                <option value="football fire">Football Fire</option>
-            </select>
-
-            <select id="filter-categorie" class="bg-white dark:bg-[#2a2a2a] text-xs border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 outline-none">
+            <select id="filter-categorie" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
                 <option value="toutes">Catégories</option>
                 <option value="PULL">PULL</option><option value="BAS">BAS</option>
                 <option value="CHAUSSURES">CHAUSSURES</option><option value="ACCESSOIRES">ACCESSOIRES</option>
                 <option value="T-SHIRT">T-SHIRT</option><option value="MANTEAU">MANTEAU</option>
             </select>
 
-            <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-[#2a2a2a] border border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all hover:scale-105 shadow-sm">
+            <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-[#1e293b] border border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all">
                 <i id="theme-icon" class="text-lg"></i>
             </button>
         </div>
@@ -75,89 +90,54 @@
         <div id="content-area" class="space-y-12"></div>
     </main>
 
-    <div id="welcome-modal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-[#161b22] p-6 rounded-2xl max-w-md w-full text-center relative border border-gray-200 dark:border-[#30363d] shadow-2xl">
-            <button onclick="closeWelcomeModal()" class="absolute top-3 right-4 text-gray-400 hover:text-red-500 text-2xl transition-colors">&times;</button>
-            <h3 class="text-xl font-bold mb-2 text-blue-500">REJOINS BBDBUY !</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-wider">Inscris-toi maintenant pour ton pack de coupons !</p>
-            <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="block w-full bg-blue-500 text-white font-bold py-3 rounded-xl mb-6 hover:bg-blue-600 transition-all uppercase shadow-lg shadow-blue-500/20">S'inscrire ici</a>
+    <div id="product-modal" class="modal fixed inset-0 bg-black/90 items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-[#1e293b] p-8 rounded-3xl max-w-lg w-full text-center relative border border-gray-200 dark:border-gray-800 shadow-2xl">
+            <h3 id="modal-title" class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2"></h3>
+            <p id="modal-meta" class="text-xs text-gray-500 uppercase font-bold mb-8 tracking-widest"></p>
             
-            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl text-left border border-blue-200 dark:border-blue-800 flex gap-4">
-                <i class="fa-solid fa-circle-info text-blue-500 text-xl mt-1"></i>
-                <p class="text-[11px] text-blue-800 dark:text-blue-300 leading-relaxed">
-                    <strong>Vérification Staff :</strong> Les articles marqués du badge <span class="text-blue-500">Staff</span> ont déjà été achetés par notre équipe. 
-                    Vous pouvez rejoindre notre Discord pour demander des photos réelles ou des photos de l'article porté !
-                </p>
-            </div>
-
-            <div class="mt-6 flex items-center justify-center space-x-2 text-[10px] text-gray-400 uppercase font-bold border-t border-gray-100 dark:border-gray-800 pt-4">
-                <input type="checkbox" id="dont-show-again" class="rounded border-gray-300 dark:bg-gray-800 dark:border-gray-700">
-                <label for="dont-show-again">Ne plus afficher</label>
-            </div>
-        </div>
-    </div>
-
-    <div id="product-modal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-[#1c1c1c] p-6 rounded-2xl max-w-md w-full text-center relative border border-gray-200 dark:border-gray-800 shadow-2xl transition-all">
-            <h3 id="modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Nom du produit</h3>
-            <p id="modal-meta" class="text-[10px] text-gray-400 uppercase font-bold mb-6 tracking-widest"></p>
-            
-            <div id="modal-staff-box" class="hidden mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl text-left border border-blue-100 dark:border-blue-900/50 flex gap-4">
-                <i class="fa-solid fa-circle-info text-blue-500 text-xl mt-1"></i>
+            <div id="modal-staff-box" class="hidden mb-8 p-5 bg-[#2563eb1a] border-l-4 border-blue-500 rounded-r-xl text-left flex gap-4">
+                <div class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg">
+                    <i class="fa-solid fa-info"></i>
+                </div>
                 <div class="space-y-1">
-                    <span class="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-tighter">Article déjà reçu par le Staff !</span>
-                    <p class="text-[11px] text-blue-800 dark:text-blue-200 leading-normal">
+                    <h4 class="text-sm font-extrabold text-blue-500 uppercase tracking-tight">Article déjà acheté et reçu par le Staff !</h4>
+                    <p class="text-[11px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium">
                         Nous avons cet article en main ! Rejoignez notre Discord et <strong>mentionnez un membre du staff</strong> pour voir des photos portées ou sous différents angles.
                     </p>
                 </div>
             </div>
 
-            <div class="space-y-3">
-                <a id="modal-btn-agent" href="#" target="_blank" class="block w-full bg-blue-500 text-white font-bold py-3.5 rounded-xl hover:bg-blue-600 transition-all shadow-md">Ouvrir le lien BBD</a>
-                <a id="modal-btn-source" href="#" target="_blank" class="block w-full bg-gray-100 dark:bg-[#2a2a2a] text-gray-900 dark:text-white font-bold py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-200 transition-all">Ouvrir le lien Source</a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a id="modal-btn-agent" href="#" target="_blank" class="bg-emerald-500 text-white font-extrabold py-4 rounded-2xl hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20">Lien Agent BBD</a>
+                <a id="modal-btn-source" href="#" target="_blank" class="bg-gray-100 dark:bg-[#0f172a] text-gray-900 dark:text-white font-extrabold py-4 rounded-2xl border border-gray-300 dark:border-gray-700 hover:bg-gray-200 transition-all">Lien Source (Weidian)</a>
             </div>
             
-            <button onclick="closeProductModal()" class="mt-6 text-xs text-gray-400 hover:text-red-500 font-bold uppercase transition-colors">Fermer la fenêtre</button>
+            <button onclick="closeProductModal()" class="mt-8 text-xs text-gray-500 hover:text-red-500 font-black uppercase transition-colors tracking-tighter">Fermer</button>
         </div>
     </div>
 
     <script>
         let tousLesProduits = [];
-
         const themeBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
+        // Theme management
         function updateThemeIcon() {
             if (html.classList.contains('dark')) {
                 themeIcon.className = 'fa-solid fa-sun text-yellow-400';
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeIcon.className = 'fa-solid fa-moon text-amber-600';
+                themeIcon.className = 'fa-solid fa-moon text-blue-900';
                 localStorage.setItem('theme', 'light');
             }
         }
-
         const savedTheme = localStorage.getItem('theme') || 'dark';
         if (savedTheme === 'light') html.classList.remove('dark');
         updateThemeIcon();
+        themeBtn.addEventListener('click', () => { html.classList.toggle('dark'); updateThemeIcon(); });
 
-        themeBtn.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            updateThemeIcon();
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            if (!localStorage.getItem('hidePopUp')) {
-                setTimeout(() => { document.getElementById('welcome-modal').classList.add('active'); }, 1500);
-            }
-        });
-
-        function closeWelcomeModal() {
-            if (document.getElementById('dont-show-again').checked) localStorage.setItem('hidePopUp', 'true');
-            document.getElementById('welcome-modal').classList.remove('active');
-        }
-
+        // Load Products
         fetch('produits.json')
             .then(res => res.json())
             .then(data => { tousLesProduits = data; updateGrid(); })
@@ -166,55 +146,45 @@
         function updateGrid() {
             const search = document.getElementById('search').value.toLowerCase();
             const staff = document.getElementById('filter-staff').value;
-            const vendor = document.getElementById('filter-vendeur').value.toLowerCase();
             const cat = document.getElementById('filter-categorie').value;
 
             const filtered = tousLesProduits.filter(p => {
                 const matchSearch = p.nom.toLowerCase().includes(search);
                 const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
-                const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
                 const matchCat = (cat === 'toutes') || (p.categorie === cat);
-                return matchSearch && matchStaff && matchVendor && matchCat;
+                return matchSearch && matchStaff && matchCat;
             });
-
             renderGrid(filtered);
         }
 
         function renderGrid(produits) {
             const area = document.getElementById('content-area');
             area.innerHTML = '';
-            
             const groups = {};
             produits.forEach(p => { if(!groups[p.categorie]) groups[p.categorie] = []; groups[p.categorie].push(p); });
 
             for (const name in groups) {
                 const section = document.createElement('section');
-                section.innerHTML = `<h2 class="text-sm font-black mb-6 text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] border-l-4 border-blue-500 pl-4">${name}</h2>`;
+                section.innerHTML = `<h2 class="text-xs font-black mb-6 text-emerald-500 uppercase tracking-[0.3em]">${name}</h2>`;
                 const grid = document.createElement('div');
                 grid.className = "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6";
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    card.className = "bg-gray-50 dark:bg-[#1c1c1c] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] hover:shadow-xl transition-all relative flex flex-col";
+                    card.className = "bg-gray-50 dark:bg-[#1e293b] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] transition-all flex flex-col shadow-lg";
                     card.onclick = () => openModal(p);
                     
-                    // Ajout dynamique du petit badge bleu Staff en bas à côté des autres tags
-                    const bottomStaffTag = p.acheteParStaff 
-                        ? `<span class="text-[8px] bg-blue-500 text-white px-2 py-1 rounded font-black uppercase tracking-wider flex items-center gap-0.5 shadow-sm"><i class="fa-brands fa-discord text-[7px]"></i> Staff</span>` 
-                        : '';
-
                     card.innerHTML = `
                         <div class="relative aspect-square">
-                            <span class="absolute top-3 left-3 bg-[#2ecc71] text-white text-[11px] font-black px-2.5 py-1 rounded-lg z-10 shadow-sm">${p.prix}</span>
-                            ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-[#5865F2] text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 shadow-sm flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
-                            <img src="${p.image}" class="w-full h-full object-cover bg-gray-200 dark:bg-neutral-800" loading="lazy">
+                            <span class="absolute top-3 left-3 price-tag shadow-md">${p.prix}</span>
+                            ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-blue-500 text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
+                            <img src="${p.image}" class="w-full h-full object-cover" loading="lazy">
                         </div>
-                        <div class="p-4 flex-1">
-                            <h4 class="font-bold text-xs truncate mb-3 text-gray-900 dark:text-white uppercase tracking-tight">${p.nom}</h4>
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <h4 class="font-bold text-xs mb-4 text-gray-900 dark:text-white uppercase leading-tight">${p.nom}</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="text-[8px] bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 px-2 py-1 rounded font-black uppercase">${p.categorie}</span>
-                                <span class="text-[8px] bg-gray-200 dark:bg-neutral-800 text-gray-500 dark:text-gray-400 px-2 py-1 rounded font-black uppercase">${p.vendeur}</span>
-                                ${bottomStaffTag}
+                                <span class="item-tag">${p.categorie}</span>
+                                <span class="item-tag">${p.vendeur}</span>
                             </div>
                         </div>
                     `;
@@ -226,13 +196,11 @@
 
         function openModal(p) {
             document.getElementById('modal-title').innerText = p.nom;
-            document.getElementById('modal-meta').innerText = `${p.categorie} • ${p.vendeur}`;
+            document.getElementById('modal-meta').innerText = `${p.categorie} • VENDEUR: ${p.vendeur}`;
             document.getElementById('modal-btn-agent').href = p.lienAgent;
             document.getElementById('modal-btn-source').href = p.lienSource;
-            
             const staffBox = document.getElementById('modal-staff-box');
             if (p.acheteParStaff) staffBox.classList.remove('hidden'); else staffBox.classList.add('hidden');
-
             document.getElementById('product-modal').classList.add('active');
         }
 
@@ -240,7 +208,6 @@
 
         document.getElementById('search').addEventListener('input', updateGrid);
         document.getElementById('filter-staff').addEventListener('change', updateGrid);
-        document.getElementById('filter-vendeur').addEventListener('change', updateGrid);
         document.getElementById('filter-categorie').addEventListener('change', updateGrid);
     </script>
 </body>
