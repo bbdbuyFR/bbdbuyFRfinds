@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BbdBuyFR Finds</title>
+    <title>BbdBuy Finds</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #121212; color: #ffffff; }
@@ -15,7 +15,7 @@
 
     <header class="bg-[#1a1a1a] p-4 flex justify-between items-center border-b border-gray-800 sticky top-0 z-50">
         <div class="flex items-center space-x-4">
-            <span class="text-xl font-bold tracking-wider text-white">MY FINDS</span>
+            <span class="text-xl font-bold tracking-wider text-white">BBDBUY FINDS</span>
             <span class="text-xs text-gray-400 hidden sm:inline">Les meilleurs liens !</span>
         </div>
         <input type="text" id="search" placeholder="Rechercher un produit..." class="bg-[#2a2a2a] text-sm rounded px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -27,6 +27,24 @@
         <div id="grid-produits" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             </div>
     </main>
+
+    <div id="welcome-modal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50 p-4">
+        <div class="bg-[#161b22] p-6 rounded-xl max-w-sm w-full text-center relative border border-[#30363d]">
+            <button onclick="closeWelcomeModal()" class="absolute top-3 right-4 text-gray-400 hover:text-white text-xl">&times;</button>
+            
+            <h3 class="text-xl font-bold mb-2 tracking-wide text-[#38bdf8]">REJOINS BBDBUY !</h3>
+            <p class="text-xs text-gray-400 mb-6 leading-relaxed">Inscris-toi dès maintenant sur BbdBuy pour obtenir ton pack de coupons.</p>
+            
+            <a href="https://www.bbdbuy.com/fr/register?partner=toncode" target="_blank" class="block w-full bg-[#38bdf8] text-black font-bold py-3 rounded-lg mb-4 hover:bg-[#0ea5e9] transition-colors tracking-wide uppercase text-sm">
+                S'inscrire ici
+            </a>
+            
+            <div class="flex items-center justify-center space-x-2 text-xs text-gray-500">
+                <input type="checkbox" id="dont-show-again" class="rounded bg-gray-900 border-gray-700">
+                <label for="dont-show-again">Ne plus afficher</label>
+            </div>
+        </div>
+    </div>
 
     <div id="product-modal" class="modal fixed inset-0 bg-black/80 items-center justify-center z-50 p-4">
         <div class="bg-[#222] p-6 rounded-xl max-w-sm w-full text-center relative border border-gray-800">
@@ -40,14 +58,25 @@
                 Ouvrir le lien Weidian
             </a>
             
-            <button onclick="closeModal()" class="mt-4 text-sm text-gray-400 hover:text-white">Fermer</button>
+            <button onclick="closeProductModal()" class="mt-4 text-sm text-gray-400 hover:text-white">Fermer</button>
         </div>
     </div>
 
     <script>
         let tousLesProduits = [];
 
-        // 1. Charger les produits depuis le fichier JSON
+        // Déclencher la pop-up d'inscription automatiquement au bout de 2 secondes
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('welcome-modal').classList.add('active');
+            }, 2000); 
+        });
+
+        function closeWelcomeModal() {
+            document.getElementById('welcome-modal').classList.remove('active');
+        }
+
+        // Charger les produits depuis le fichier JSON
         fetch('produits.json')
             .then(response => response.json())
             .then(data => {
@@ -56,15 +85,15 @@
             })
             .catch(err => console.error("Erreur lors du chargement des produits:", err));
 
-        // 2. Fonction pour afficher les cartes sur l'écran
+        // Fonction pour afficher les cartes sur l'écran
         function afficherProduits(produits) {
             const grid = document.getElementById('grid-produits');
-            grid.innerHTML = ''; // On vide la grille
+            grid.innerHTML = ''; 
 
             produits.forEach(prod => {
                 const card = document.createElement('div');
                 card.className = "bg-[#1c1c1c] rounded-lg overflow-hidden border border-gray-800 cursor-pointer hover:border-gray-600 transition-all relative";
-                card.onclick = () => openModal(prod);
+                card.onclick = () => openProductModal(prod);
                 
                 card.innerHTML = `
                     <div class="absolute top-2 left-2 bg-[#10b981] text-xs font-bold px-2 py-0.5 rounded text-white">${prod.prix}</div>
@@ -81,8 +110,8 @@
             });
         }
 
-        // 3. Gestion de la Pop-up au clic
-        function openModal(prod) {
+        // Gestion de la Pop-up Produit au clic
+        function openProductModal(prod) {
             document.getElementById('modal-title').innerText = prod.nom;
             document.getElementById('modal-meta').innerText = `Catégorie : ${prod.categorie} • Vendeur : ${prod.vendeur}`;
             document.getElementById('modal-btn-agent').href = prod.lienAgent;
@@ -90,11 +119,11 @@
             document.getElementById('product-modal').classList.add('active');
         }
 
-        function closeModal() {
+        function closeProductModal() {
             document.getElementById('product-modal').classList.remove('active');
         }
 
-        // 4. Barre de recherche fonctionnelle
+        // Barre de recherche
         document.getElementById('search').addEventListener('input', (e) => {
             const recherche = e.target.value.toLowerCase();
             const produitsFiltrés = tousLesProduits.filter(p => p.nom.toLowerCase().includes(recherche));
