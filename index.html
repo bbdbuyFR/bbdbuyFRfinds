@@ -24,16 +24,14 @@
             background-repeat: no-repeat; background-position: right 8px center;
             -webkit-appearance: none; appearance: none;
         }
-        /* Style des étiquettes de prix façon screenshot */
         .price-tag {
-            background: #10b981; /* Vert Émeraude */
+            background: #10b981;
             color: white;
             font-weight: 800;
             padding: 4px 12px;
             border-radius: 8px;
             font-size: 13px;
         }
-        /* Tag de catégorie et vendeur style screenshot */
         .item-tag {
             background: #2a2a2a;
             color: #a1a1aa;
@@ -56,11 +54,14 @@
             </div>
             
             <div class="flex items-center space-x-3">
-                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#4f46e5] rounded-xl flex items-center justify-center text-white text-xl hover:scale-110 transition-all shadow-lg shadow-indigo-500/20">
+                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#5865F2] rounded-xl flex items-center justify-center text-white text-xl hover:scale-110 transition-all shadow-lg" title="Discord">
                     <i class="fa-brands fa-discord"></i>
                 </a>
-                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-emerald-500 rounded-xl flex flex-col items-center justify-center text-white font-extrabold text-[9px] leading-tight hover:scale-110 transition-all">
-                    <span>BBD</span><span>BUY</span>
+                <a href="#" target="_blank" class="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-white text-xl border border-gray-700 hover:scale-110 transition-all shadow-lg" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-[#ff9900] rounded-xl flex flex-col items-center justify-center text-black font-extrabold text-[9px] leading-tight hover:scale-110 transition-all shadow-lg" title="S'inscrire">
+                    <span>BBD</span><span class="bg-black text-[#ff9900] px-0.5 rounded-[2px]">BUY</span>
                 </a>
             </div>
         </div>
@@ -71,6 +72,13 @@
             <select id="filter-staff" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
                 <option value="tous">Tous les articles</option>
                 <option value="staff">Acheté par le Staff</option>
+            </select>
+
+            <select id="filter-vendeur" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
+                <option value="tous">Vendeurs</option>
+                <option value="ccoo">CCOO</option><option value="jhy">JHY</option>
+                <option value="mr q">Mr Q</option><option value="xinstore">Xinstore</option>
+                <option value="football fire">Football Fire</option>
             </select>
 
             <select id="filter-categorie" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
@@ -96,8 +104,8 @@
             <p id="modal-meta" class="text-xs text-gray-500 uppercase font-bold mb-8 tracking-widest"></p>
             
             <div id="modal-staff-box" class="hidden mb-8 p-5 bg-[#2563eb1a] border-l-4 border-blue-500 rounded-r-xl text-left flex gap-4">
-                <div class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg">
-                    <i class="fa-solid fa-info"></i>
+                <div class="bg-[#5865F2] w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg">
+                    <i class="fa-brands fa-discord"></i>
                 </div>
                 <div class="space-y-1">
                     <h4 class="text-sm font-extrabold text-blue-500 uppercase tracking-tight">Article déjà acheté et reçu par le Staff !</h4>
@@ -122,7 +130,6 @@
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
-        // Theme management
         function updateThemeIcon() {
             if (html.classList.contains('dark')) {
                 themeIcon.className = 'fa-solid fa-sun text-yellow-400';
@@ -137,7 +144,6 @@
         updateThemeIcon();
         themeBtn.addEventListener('click', () => { html.classList.toggle('dark'); updateThemeIcon(); });
 
-        // Load Products
         fetch('produits.json')
             .then(res => res.json())
             .then(data => { tousLesProduits = data; updateGrid(); })
@@ -146,13 +152,15 @@
         function updateGrid() {
             const search = document.getElementById('search').value.toLowerCase();
             const staff = document.getElementById('filter-staff').value;
+            const vendor = document.getElementById('filter-vendeur').value.toLowerCase();
             const cat = document.getElementById('filter-categorie').value;
 
             const filtered = tousLesProduits.filter(p => {
                 const matchSearch = p.nom.toLowerCase().includes(search);
                 const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
+                const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
                 const matchCat = (cat === 'toutes') || (p.categorie === cat);
-                return matchSearch && matchStaff && matchCat;
+                return matchSearch && matchStaff && matchVendor && matchCat;
             });
             renderGrid(filtered);
         }
@@ -177,7 +185,7 @@
                     card.innerHTML = `
                         <div class="relative aspect-square">
                             <span class="absolute top-3 left-3 price-tag shadow-md">${p.prix}</span>
-                            ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-blue-500 text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
+                            ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-[#5865F2] text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
                             <img src="${p.image}" class="w-full h-full object-cover" loading="lazy">
                         </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
@@ -208,6 +216,7 @@
 
         document.getElementById('search').addEventListener('input', updateGrid);
         document.getElementById('filter-staff').addEventListener('change', updateGrid);
+        document.getElementById('filter-vendeur').addEventListener('change', updateGrid);
         document.getElementById('filter-categorie').addEventListener('change', updateGrid);
     </script>
 </body>
