@@ -18,5 +18,16 @@
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7785564973?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7785564973",
     "acheteParStaff": true
+  },
+  {
+    "nom": "Short nike tech gris",
+    "prix": "12€",
+    "image": "https://i.imgur.com/qGXubUC.png",
+    "categorie": "BAS",
+    "vendeur": "JHY",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7785564973?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7785564973",
+    "acheteParStaff": false
   }
-]
+  ]
+
