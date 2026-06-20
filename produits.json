@@ -8,7 +8,7 @@
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7785564973?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7785564973",
     "acheteParStaff": true
-  }
+  },
   {
     "nom": "nike tech kangourou gris",
     "prix": "25€",
@@ -19,14 +19,4 @@
     "lienSource": "https://weidian.com/item.html?itemID=7785564973",
     "acheteParStaff": true
   }
-  {
-    "nom": "Ensemble Tech Fleece Noir",
-    "prix": "25€",
-    "image": "https://i.imgur.com/qGXubUC.png",
-    "categorie": "PULL",
-    "vendeur": "JHY",
-    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7785564973?inviteCode=QLjYvT",
-    "lienSource": "https://weidian.com/item.html?itemID=7785564973",
-    "acheteParStaff": true
-  }
-]
+ ]
