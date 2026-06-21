@@ -57,7 +57,7 @@
     "vendeur": "CCOO",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
-    "acheteParStaff": false
+    "acheteParStaff": true
   },
   {
     "nom": "Pull nike tech gris",
@@ -77,7 +77,7 @@
     "vendeur": "",
     "lienAgent": "https://www.bbdbuyeu.com/goods/1688/917221539532?inviteCode=QLjYvT",
     "lienSource": "https://detail.1688.com/offer/919648688898.html",
-    "acheteParStaff": false
+    "acheteParStaff": true
   },
   {
     "nom": "Short nike tech noir",
@@ -177,7 +177,7 @@
     "vendeur": "PJS",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788144280?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7788144280&spider_token=4b10",
-    "acheteParStaff": false
+    "acheteParStaff": true
   },
   {
     "nom": "Veste aéroswift",
@@ -207,7 +207,7 @@
     "vendeur": "PJS",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788144280?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7788144280&spider_token=4b10",
-    "acheteParStaff": false
+    "acheteParStaff": true
   },
   {
     "nom": "Phenom élite gris bouclier",
