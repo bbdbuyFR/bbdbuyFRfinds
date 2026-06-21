@@ -176,18 +176,18 @@
     "categorie": "PULL",
     "vendeur": "PJS",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788144280?inviteCode=QLjYvT",
-    "lienSource": "https://lien_source_ici",
+    "lienSource": "https://weidian.com/item.html?itemID=7788144280&spider_token=4b10",
     "acheteParStaff": false
   },
   {
-    "nom": "Article 19 - Ton titre ici",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
-    "categorie": "",
-    "vendeur": "",
-    "lienAgent": "https://lien_agent_ici",
-    "lienSource": "https://lien_source_ici",
-    "acheteParStaff": false
+    "nom": "Veste aéroswift",
+    "prix": "30€",
+    "image": "https://i.imgur.com/3dbMprh.png",
+    "categorie": "VESTE",
+    "vendeur": "CCOO",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
+    "acheteParStaff": true
   },
   {
     "nom": "Article 20 - Ton titre ici",
