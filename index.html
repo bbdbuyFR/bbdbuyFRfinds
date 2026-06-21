@@ -91,16 +91,24 @@
 
             <select id="filter-vendeur" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
                 <option value="tous">Vendeurs</option>
-                <option value="ccoo">CCOO</option><option value="jhy">JHY</option>
-                <option value="mr q">Mr Q</option><option value="xinstore">Xinstore</option>
+                <option value="ccoo">CCOO</option>
+                <option value="jhy">JHY</option>
+                <option value="mr q">Mr Q</option>
+                <option value="xinstore">Xinstore</option>
                 <option value="football fire">Football Fire</option>
+                <option value="pjs">PJS</option>
+                <option value="mr k">Mr K</option>
             </select>
 
             <select id="filter-categorie" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
                 <option value="toutes">Catégories</option>
-                <option value="PULL">PULL</option><option value="BAS">BAS</option>
-                <option value="CHAUSSURES">CHAUSSURES</option><option value="ACCESSOIRES">ACCESSOIRES</option>
-                <option value="T-SHIRT">T-SHIRT</option><option value="MANTEAU">MANTEAU</option>
+                <option value="PULL">PULL</option>
+                <option value="BAS">BAS</option>
+                <option value="SHORT">SHORT</option>
+                <option value="CHAUSSURES">CHAUSSURES</option>
+                <option value="ACCESSOIRES">ACCESSOIRES</option>
+                <option value="T-SHIRT">T-SHIRT</option>
+                <option value="MANTEAU">MANTEAU</option>
             </select>
 
             <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-[#1e293b] border border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all">
@@ -171,10 +179,10 @@
             const search = document.getElementById('search').value.toLowerCase();
             const staff = document.getElementById('filter-staff').value;
             const vendor = document.getElementById('filter-vendeur').value.toLowerCase();
-            const cat = document.getElementById('filter-categorie').value.toUpperCase(); // Forcer majuscules pour le filtre
+            const cat = document.getElementById('filter-categorie').value.toUpperCase();
 
             const filtered = tousLesProduits.filter(p => {
-                const itemCat = p.categorie.trim().toUpperCase(); // Forcer majuscules pour l'article
+                const itemCat = p.categorie.trim().toUpperCase();
                 const matchSearch = p.nom.toLowerCase().includes(search);
                 const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
                 const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
@@ -190,7 +198,6 @@
             const groups = {};
             
             produits.forEach(p => { 
-                // Nettoie les espaces et force le nom du groupe en MAJUSCULES pour fusionner les doublons
                 const catEnMajuscules = p.categorie.trim().toUpperCase();
                 if(!groups[catEnMajuscules]) groups[catEnMajuscules] = []; 
                 groups[catEnMajuscules].push(p); 
