@@ -32,14 +32,22 @@
             border-radius: 8px;
             font-size: 13px;
         }
-        .item-tag {
-            background: #2a2a2a;
-            color: #a1a1aa;
+        /* Style des nouveaux tags flashy */
+        .tag-categorie-flash {
+            background: #00e5ff;
+            color: #000000;
             font-size: 11px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 4px;
-            text-transform: uppercase;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .tag-vendeur-flash {
+            background: #ff6d00;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
         }
         .dark select { background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
@@ -101,7 +109,7 @@
     <div id="product-modal" class="modal fixed inset-0 bg-black/90 items-center justify-center z-50 p-4">
         <div class="bg-white dark:bg-[#1e293b] p-8 rounded-3xl max-w-lg w-full text-center relative border border-gray-200 dark:border-gray-800 shadow-2xl">
             <h3 id="modal-title" class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2"></h3>
-            <p id="modal-meta" class="text-xs text-gray-500 uppercase font-bold mb-8 tracking-widest"></p>
+            <p id="modal-meta" class="text-xs text-gray-500 font-bold mb-8 tracking-widest"></p>
             
             <div id="modal-staff-box" class="hidden mb-8 p-5 bg-[#2563eb1a] border-l-4 border-blue-500 rounded-r-xl text-left flex gap-4">
                 <div class="bg-[#5865F2] w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg">
@@ -146,7 +154,11 @@
 
         fetch('produits.json')
             .then(res => res.json())
-            .then(data => { tousLesProduits = data; updateGrid(); })
+            .then(data => { 
+                // Filtrer pour retirer d'office les lignes vides du JSON
+                tousLesProduits = data.filter(p => p.categorie && p.categorie.trim() !== ""); 
+                updateGrid(); 
+            })
             .catch(err => console.error(err));
 
         function updateGrid() {
@@ -169,7 +181,12 @@
             const area = document.getElementById('content-area');
             area.innerHTML = '';
             const groups = {};
-            produits.forEach(p => { if(!groups[p.categorie]) groups[p.categorie] = []; groups[p.categorie].push(p); });
+            
+            // Regroupe par catégorie pour ne plus jamais avoir de doublons
+            produits.forEach(p => { 
+                if(!groups[p.categorie]) groups[p.categorie] = []; 
+                groups[p.categorie].push(p); 
+            });
 
             for (const name in groups) {
                 const section = document.createElement('section');
@@ -179,20 +196,21 @@
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    card.className = "bg-gray-50 dark:bg-[#1e293b] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] transition-all flex flex-col shadow-lg";
+                    // Hauteur fixe à h-[360px] pour des carrés/rectangles alignés à la perfection
+                    card.className = "bg-gray-50 dark:bg-[#1e293b] h-[360px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] transition-all flex flex-col shadow-lg";
                     card.onclick = () => openModal(p);
                     
                     card.innerHTML = `
-                        <div class="relative aspect-square">
+                        <div class="relative aspect-square bg-[#121212]">
                             <span class="absolute top-3 left-3 price-tag shadow-md">${p.prix}</span>
                             ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-[#5865F2] text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
-                            <img src="${p.image}" class="w-full h-full object-cover" loading="lazy">
+                            <img src="${p.image}" class="w-full h-full object-contain" loading="lazy">
                         </div>
-                        <div class="p-4 flex-1 flex flex-col justify-between">
-                            <h4 class="font-bold text-xs mb-4 text-gray-900 dark:text-white uppercase leading-tight">${p.nom}</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="item-tag">${p.categorie}</span>
-                                <span class="item-tag">${p.vendeur}</span>
+                        <div class="p-4 flex-1 flex flex-col justify-between overflow-hidden">
+                            <h4 class="font-bold text-xs text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="tag-categorie-flash">${p.categorie}</span>
+                                ${p.vendeur ? `<span class="tag-vendeur-flash">${p.vendeur}</span>` : ''}
                             </div>
                         </div>
                     `;
