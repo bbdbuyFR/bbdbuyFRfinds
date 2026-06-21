@@ -60,23 +60,23 @@
     "acheteParStaff": false
   },
   {
-    "nom": "Article 7 - Ton titre ici",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
-    "categorie": "",
-    "vendeur": "",
-    "lienAgent": "https://lien_agent_ici",
-    "lienSource": "https://lien_source_ici",
+    "nom": "Pull nike tech gris",
+    "prix": "22€",
+    "image": "https://imgur.com/ad19e5ef-d0b8-4694-929a-38cce6cb5633",
+    "categorie": "PULL",
+    "vendeur": "PJS",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788144280?inviteCode=QLjYvT",
+    "lienSource": " https://weidian.com/item.html?itemID=7788144280&spider_token=4b10",
     "acheteParStaff": false
   },
   {
-    "nom": "Article 8 - Ton titre ici",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
-    "categorie": "",
+    "nom": "Pull nike tech noir",
+    "prix": "12",
+    "image": "https://imgur.com/a2017850-7d8d-4196-87c7-dd395d5e402e",
+    "categorie": "PULL",
     "vendeur": "",
-    "lienAgent": "https://lien_agent_ici",
-    "lienSource": "https://lien_source_ici",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/1688/917221539532?inviteCode=QLjYvT",
+    "lienSource": "https://detail.1688.com/offer/919648688898.html",
     "acheteParStaff": false
   },
   {
