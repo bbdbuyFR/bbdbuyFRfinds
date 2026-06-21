@@ -156,7 +156,7 @@
     "categorie": "VESTE",
     "vendeur": "CCOO",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
-    "lienSource": " https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d ",
+    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d ",
     "acheteParStaff": false
   },
   {
@@ -166,16 +166,16 @@
     "categorie": "T-SHIRT",
     "vendeur": "PJS",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788144280?inviteCode=QLjYvT",
-    "lienSource": ": https://weidian.com/item.html?itemID=7788144280&spider_token=4b10",
+    "lienSource":  "https://weidian.com/item.html?itemID=7788144280&spider_token=4b10",
     "acheteParStaff": true
   },
   {
-    "nom": "Article 18 - Ton titre ici",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
-    "categorie": "",
-    "vendeur": "",
-    "lienAgent": "https://lien_agent_ici",
+    "nom": "Nike running energy",
+    "prix": "13€",
+    "image": "https://i.imgur.com/9Z7stih.png",
+    "categorie": "PULL",
+    "vendeur": "PJS",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788144280?inviteCode=QLjYvT",
     "lienSource": "https://lien_source_ici",
     "acheteParStaff": false
   },
