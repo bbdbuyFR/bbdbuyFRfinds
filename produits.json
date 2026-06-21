@@ -217,7 +217,7 @@
     "vendeur": "CCOO",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
-    "acheteParStaff": false
+    "acheteParStaff": true
   },
   {
     "nom": "Nike tempo machine",
@@ -227,7 +227,7 @@
     "vendeur": "CCOO",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
-    "acheteParStaff": false
+    "acheteParStaff": true
   },
   {
     "nom": "Article 24 - Ton titre ici",
