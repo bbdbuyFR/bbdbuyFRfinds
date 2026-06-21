@@ -32,7 +32,6 @@
             border-radius: 6px;
             font-size: 11px;
         }
-        /* Style des tags avec des couleurs douces et harmonieuses */
         .tag-categorie-flash {
             background: rgba(56, 189, 248, 0.15);
             color: #38bdf8;
@@ -172,13 +171,14 @@
             const search = document.getElementById('search').value.toLowerCase();
             const staff = document.getElementById('filter-staff').value;
             const vendor = document.getElementById('filter-vendeur').value.toLowerCase();
-            const cat = document.getElementById('filter-categorie').value;
+            const cat = document.getElementById('filter-categorie').value.toUpperCase(); // Forcer majuscules pour le filtre
 
             const filtered = tousLesProduits.filter(p => {
+                const itemCat = p.categorie.trim().toUpperCase(); // Forcer majuscules pour l'article
                 const matchSearch = p.nom.toLowerCase().includes(search);
                 const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
                 const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
-                const matchCat = (cat === 'toutes') || (p.categorie === cat);
+                const matchCat = (cat === 'TOUTES') || (itemCat === cat);
                 return matchSearch && matchStaff && matchVendor && matchCat;
             });
             renderGrid(filtered);
@@ -190,8 +190,10 @@
             const groups = {};
             
             produits.forEach(p => { 
-                if(!groups[p.categorie]) groups[p.categorie] = []; 
-                groups[p.categorie].push(p); 
+                // Nettoie les espaces et force le nom du groupe en MAJUSCULES pour fusionner les doublons
+                const catEnMajuscules = p.categorie.trim().toUpperCase();
+                if(!groups[catEnMajuscules]) groups[catEnMajuscules] = []; 
+                groups[catEnMajuscules].push(p); 
             });
 
             for (const name in groups) {
@@ -202,7 +204,6 @@
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    // Hauteur calibrée précisément pour correspondre à ton modèle d'image compact
                     card.className = "bg-gray-50 dark:bg-[#1e293b] h-[285px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.02] transition-all flex flex-col shadow-sm";
                     card.onclick = () => openModal(p);
                     
@@ -214,7 +215,7 @@
                         <div class="p-3 flex-1 flex flex-col justify-between overflow-hidden">
                             <h4 class="font-bold text-[13px] text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
                             <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
-                                <span class="tag-categorie-flash">${p.categorie}</span>
+                                <span class="tag-categorie-flash">${p.categorie.trim().toUpperCase()}</span>
                                 ${p.vendeur ? `<span class="tag-vendeur-flash">${p.vendeur}</span>` : ''}
                                 ${p.acheteParStaff ? `<span class="tag-staff-flash">Staff</span>` : ''}
                             </div>
@@ -228,7 +229,7 @@
 
         function openModal(p) {
             document.getElementById('modal-title').innerText = p.nom;
-            document.getElementById('modal-meta').innerText = `${p.categorie} • VENDEUR: ${p.vendeur}`;
+            document.getElementById('modal-meta').innerText = `${p.categorie.trim().toUpperCase()} • VENDEUR: ${p.vendeur}`;
             document.getElementById('modal-btn-agent').href = p.lienAgent;
             document.getElementById('modal-btn-source').href = p.lienSource;
             const staffBox = document.getElementById('modal-staff-box');
