@@ -32,7 +32,6 @@
             border-radius: 8px;
             font-size: 13px;
         }
-        /* Style des nouveaux tags flashy */
         .tag-categorie-flash {
             background: #00e5ff;
             color: #000000;
@@ -48,6 +47,15 @@
             font-weight: 800;
             padding: 4px 10px;
             border-radius: 6px;
+        }
+        .tag-staff-flash {
+            background: #5865F2;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
         }
         .dark select { background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
@@ -155,7 +163,6 @@
         fetch('produits.json')
             .then(res => res.json())
             .then(data => { 
-                // Filtrer pour retirer d'office les lignes vides du JSON
                 tousLesProduits = data.filter(p => p.categorie && p.categorie.trim() !== ""); 
                 updateGrid(); 
             })
@@ -182,7 +189,6 @@
             area.innerHTML = '';
             const groups = {};
             
-            // Regroupe par catégorie pour ne plus jamais avoir de doublons
             produits.forEach(p => { 
                 if(!groups[p.categorie]) groups[p.categorie] = []; 
                 groups[p.categorie].push(p); 
@@ -196,21 +202,21 @@
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    // Hauteur fixe à h-[360px] pour des carrés/rectangles alignés à la perfection
-                    card.className = "bg-gray-50 dark:bg-[#1e293b] h-[360px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] transition-all flex flex-col shadow-lg";
+                    // Hauteur fixe harmonisée basée sur ton modèle
+                    card.className = "bg-gray-50 dark:bg-[#1e293b] h-[375px] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] transition-all flex flex-col shadow-lg";
                     card.onclick = () => openModal(p);
                     
                     card.innerHTML = `
-                        <div class="relative aspect-square bg-[#121212]">
+                        <div class="relative aspect-square bg-[#121212] flex items-center justify-center overflow-hidden">
                             <span class="absolute top-3 left-3 price-tag shadow-md">${p.prix}</span>
-                            ${p.acheteParStaff ? `<span class="absolute top-3 right-3 bg-[#5865F2] text-white text-[9px] font-black px-2 py-1 rounded-lg z-10 flex items-center gap-1 uppercase"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
                             <img src="${p.image}" class="w-full h-full object-contain" loading="lazy">
                         </div>
                         <div class="p-4 flex-1 flex flex-col justify-between overflow-hidden">
-                            <h4 class="font-bold text-xs text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
-                            <div class="flex flex-wrap gap-2 mt-auto">
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
+                            <div class="flex flex-wrap gap-2 mt-auto pt-2">
                                 <span class="tag-categorie-flash">${p.categorie}</span>
                                 ${p.vendeur ? `<span class="tag-vendeur-flash">${p.vendeur}</span>` : ''}
+                                ${p.acheteParStaff ? `<span class="tag-staff-flash"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
                             </div>
                         </div>
                     `;
