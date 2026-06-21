@@ -28,34 +28,34 @@
             background: #10b981;
             color: white;
             font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-        }
-        .tag-categorie-flash {
-            background: #00e5ff;
-            color: #000000;
+            padding: 2px 8px;
+            border-radius: 6px;
             font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
+        }
+        /* Style des tags avec des couleurs douces et harmonieuses */
+        .tag-categorie-flash {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
             border-radius: 6px;
         }
         .tag-vendeur-flash {
-            background: #ff6d00;
-            color: #ffffff;
+            background: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
             font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
+            font-weight: 600;
+            padding: 3px 8px;
             border-radius: 6px;
         }
         .tag-staff-flash {
-            background: #5865F2;
-            color: #ffffff;
+            background: rgba(129, 140, 248, 0.15);
+            color: #818cf8;
             font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
+            font-weight: 600;
+            padding: 3px 8px;
             border-radius: 6px;
-            text-transform: uppercase;
         }
         .dark select { background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
@@ -196,27 +196,27 @@
 
             for (const name in groups) {
                 const section = document.createElement('section');
-                section.innerHTML = `<h2 class="text-xs font-black mb-6 text-emerald-500 uppercase tracking-[0.3em]">${name}</h2>`;
+                section.innerHTML = `<h2 class="text-xs font-black mb-4 text-emerald-500 uppercase tracking-[0.3em]">${name}</h2>`;
                 const grid = document.createElement('div');
-                grid.className = "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6";
+                grid.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4";
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    // Hauteur fixe harmonisée basée sur ton modèle
-                    card.className = "bg-gray-50 dark:bg-[#1e293b] h-[375px] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.03] transition-all flex flex-col shadow-lg";
+                    // Hauteur calibrée précisément pour correspondre à ton modèle d'image compact
+                    card.className = "bg-gray-50 dark:bg-[#1e293b] h-[285px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.02] transition-all flex flex-col shadow-sm";
                     card.onclick = () => openModal(p);
                     
                     card.innerHTML = `
-                        <div class="relative aspect-square bg-[#121212] flex items-center justify-center overflow-hidden">
-                            <span class="absolute top-3 left-3 price-tag shadow-md">${p.prix}</span>
+                        <div class="relative aspect-square bg-[#121212] flex items-center justify-center overflow-hidden shrink-0">
+                            <span class="absolute top-2 left-2 price-tag shadow-md">${p.prix}</span>
                             <img src="${p.image}" class="w-full h-full object-contain" loading="lazy">
                         </div>
-                        <div class="p-4 flex-1 flex flex-col justify-between overflow-hidden">
-                            <h4 class="font-bold text-sm text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
-                            <div class="flex flex-wrap gap-2 mt-auto pt-2">
+                        <div class="p-3 flex-1 flex flex-col justify-between overflow-hidden">
+                            <h4 class="font-bold text-[13px] text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
+                            <div class="flex flex-wrap gap-1.5 mt-auto pt-1">
                                 <span class="tag-categorie-flash">${p.categorie}</span>
                                 ${p.vendeur ? `<span class="tag-vendeur-flash">${p.vendeur}</span>` : ''}
-                                ${p.acheteParStaff ? `<span class="tag-staff-flash"><i class="fa-brands fa-discord"></i> Staff</span>` : ''}
+                                ${p.acheteParStaff ? `<span class="tag-staff-flash">Staff</span>` : ''}
                             </div>
                         </div>
                     `;
