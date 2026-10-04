@@ -116,8 +116,8 @@
                 <option value="BAS">BAS</option>
                 <option value="SHORT">SHORT</option>
                 <option value="VESTE">VESTE</option>
-                <option value="CHAUSSURES">CHAUSSURES</option>
-                <option value="ACCESSOIRES">ACCESSOIRES</option>
+                <option value="CHAUSSURE">CHAUSSURE</option>
+                <option value="ACCESSOIRE">ACCESSOIRE</option>
                 <option value="T-SHIRT">T-SHIRT</option>
                 <option value="DOUDOUNE">DOUDOUNE</option>
             </select>
@@ -174,7 +174,11 @@
 
         // Gestion des clics en LocalStorage
         function getClicksMap() {
-            return JSON.parse(localStorage.getItem('bbdbuy_product_clicks') || '{}');
+            try {
+                return JSON.parse(localStorage.getItem('bbdbuy_product_clicks') || '{}');
+            } catch (e) {
+                return {};
+            }
         }
 
         function getClicks(idOuNom) {
@@ -188,27 +192,52 @@
             localStorage.setItem('bbdbuy_product_clicks', JSON.stringify(map));
         }
 
+        // Chargement sécurisé de produits.json
         fetch('produits.json')
-            .then(res => res.json())
-            .then(data => { 
-                tousLesProduits = data.filter(p => p.categorie && p.categorie.trim() !== ""); 
-                updateGrid(); 
+            .then(res => {
+                if (!res.ok) throw new Error("Erreur serveur lors du chargement de produits.json");
+                return res.json();
             })
-            .catch(err => console.error(err));
+            .then(data => { 
+                if (Array.isArray(data)) {
+                    tousLesProduits = data.filter(p => p && p.categorie && String(p.categorie).trim() !== ""); 
+                    updateGrid(); 
+                } else {
+                    showError("Le fichier produits.json n'est pas un tableau valide.");
+                }
+            })
+            .catch(err => {
+                console.error("Erreur d'affichage :", err);
+                showError("Impossible de charger les produits. Vérifiez que 'produits.json' existe et qu'il ne contient pas d'erreurs de syntaxe.");
+            });
+
+        function showError(msg) {
+            const area = document.getElementById('content-area');
+            area.innerHTML = `<div class="bg-red-950/50 border border-red-500/40 text-red-300 p-6 rounded-2xl text-center text-sm">${msg}</div>`;
+        }
 
         function updateGrid() {
-            const search = document.getElementById('search').value.toLowerCase();
+            const search = (document.getElementById('search').value || '').toLowerCase();
             const staff = document.getElementById('filter-staff').value;
-            const vendor = document.getElementById('filter-vendeur').value.toLowerCase();
-            const cat = document.getElementById('filter-categorie').value.toUpperCase();
+            const vendor = (document.getElementById('filter-vendeur').value || '').toLowerCase();
+            const cat = (document.getElementById('filter-categorie').value || '').toUpperCase();
             const sort = document.getElementById('filter-sort').value;
 
             let filtered = tousLesProduits.filter(p => {
-                const itemCat = p.categorie.trim().toUpperCase();
-                const matchSearch = p.nom.toLowerCase().includes(search);
+                const itemCat = String(p.categorie || '').trim().toUpperCase();
+                const itemNom = String(p.nom || '').toLowerCase();
+                const itemVendeur = String(p.vendeur || '').toLowerCase();
+
+                const matchSearch = itemNom.includes(search);
                 const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
-                const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
-                const matchCat = (cat === 'TOUTES') || (itemCat === cat);
+                const matchVendor = (vendor === 'tous') || (itemVendeur === vendor);
+                
+                // Souplesse pour "CHAUSSURE" / "CHAUSSURES" et "ACCESSOIRE" / "ACCESSOIRES"
+                const matchCat = (cat === 'TOUTES') || 
+                                 (itemCat === cat) || 
+                                 (itemCat.startsWith(cat)) || 
+                                 (cat.startsWith(itemCat));
+
                 return matchSearch && matchStaff && matchVendor && matchCat;
             });
 
@@ -222,10 +251,16 @@
         function renderGrid(produits) {
             const area = document.getElementById('content-area');
             area.innerHTML = '';
+
+            if (produits.length === 0) {
+                area.innerHTML = `<div class="text-center text-gray-500 py-10 text-sm">Aucun article trouvé.</div>`;
+                return;
+            }
+
             const groups = {};
             
             produits.forEach(p => { 
-                const catEnMajuscules = p.categorie.trim().toUpperCase();
+                const catEnMajuscules = String(p.categorie || '').trim().toUpperCase();
                 if(!groups[catEnMajuscules]) groups[catEnMajuscules] = []; 
                 groups[catEnMajuscules].push(p); 
             });
@@ -251,16 +286,16 @@
                     
                     card.innerHTML = `
                         <div class="relative aspect-[4/3] w-full bg-[#1c1c1c] overflow-hidden shrink-0">
-                            <span class="absolute top-2 left-2 price-badge z-10 shadow-md">${p.prix}</span>
+                            <span class="absolute top-2 left-2 price-badge z-10 shadow-md">${p.prix || ''}</span>
                             <span class="absolute top-2 right-2 views-badge z-10 shadow-md flex items-center gap-1">
                                 <i class="fa-regular fa-eye text-[10px]"></i> ${views}
                             </span>
-                            <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.nom}">
+                            <img src="${p.image || ''}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.nom || ''}">
                         </div>
                         <div class="p-2.5 flex-1 flex flex-col justify-between bg-[#1c1c1c]">
-                            <h4 class="font-semibold text-xs text-gray-100 leading-tight line-clamp-2 mb-2 group-hover:text-emerald-400 transition-colors">${p.nom}</h4>
+                            <h4 class="font-semibold text-xs text-gray-100 leading-tight line-clamp-2 mb-2 group-hover:text-emerald-400 transition-colors">${p.nom || ''}</h4>
                             <div class="flex flex-wrap gap-1 mt-auto">
-                                <span class="tag-pill">${p.categorie.trim().toUpperCase()}</span>
+                                <span class="tag-pill">${String(p.categorie || '').trim().toUpperCase()}</span>
                                 ${p.vendeur ? `<span class="tag-pill">${p.vendeur}</span>` : ''}
                                 ${p.acheteParStaff ? `<span class="tag-staff">Staff</span>` : ''}
                             </div>
@@ -279,14 +314,14 @@
             // Récupère la valeur tempsWH depuis produits.json ou bascule sur 3-5J si vide
             const tempsWH = (p.tempsWH && String(p.tempsWH).trim() !== "") ? String(p.tempsWH).trim().toUpperCase() : "3-5J";
             
-            document.getElementById('modal-title').innerText = p.nom;
+            document.getElementById('modal-title').innerText = p.nom || '';
             document.getElementById('modal-wh-text').innerText = `WH: ${tempsWH}`;
             document.getElementById('modal-views-text').innerText = `${views} VUE${views > 1 ? 'S' : ''}`;
             
-            document.getElementById('modal-img').src = p.image;
-            document.getElementById('modal-img').alt = p.nom;
-            document.getElementById('modal-btn-agent').href = p.lienAgent;
-            document.getElementById('modal-btn-source').href = p.lienSource;
+            document.getElementById('modal-img').src = p.image || '';
+            document.getElementById('modal-img').alt = p.nom || '';
+            document.getElementById('modal-btn-agent').href = p.lienAgent || '#';
+            document.getElementById('modal-btn-source').href = p.lienSource || '#';
             
             const staffBox = document.getElementById('modal-staff-box');
             if (p.acheteParStaff) staffBox.classList.remove('hidden'); else staffBox.classList.add('hidden');
