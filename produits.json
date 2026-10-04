@@ -331,8 +331,8 @@
   },
   {
     "nom": "Bas tempo blanc",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "prix": "20€",
+    "image": "https://i.imgur.com/w3awO4b.png",
     "categorie": "BAS",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -341,8 +341,8 @@
   },
   {
     "nom": "Vest aéroswift blanc",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "prix": "29€",
+    "image": "https://i.imgur.com/86rk1Uu.png",
     "categorie": "VESTE",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -352,7 +352,7 @@
   {
     "nom": "Bas trial rouge",
     "prix": "21€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "image": "https://i.imgur.com/NRiAT6i.png",
     "categorie": "Bas",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -372,7 +372,7 @@
   {
     "nom": "Haut zip tokyo",
     "prix": "19€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "image": "https://i.imgur.com/07gBhtn.png",
     "categorie": "PULL",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -382,7 +382,7 @@
   {
     "nom": "Haut tempo machine blanc",
     "prix": "19€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "image": "https://i.imgur.com/nLJ8D6U.png",
     "categorie": "PULL",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -400,13 +400,13 @@
     "acheteParStaff": true
   },
   {
-    "nom": "Bas trial",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "nom": "Bas trial phenom élite",
+    "prix": "21€",
+    "image": "https://i.imgur.com/Y5rOAlV.png",
     "categorie": "BAS",
     "vendeur": "CCOO",
-    "lienAgent": "https://lien_agent_ici",
-    "lienSource": "https://lien_source_ici",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
     "acheteParStaff": false
   },
   {
@@ -415,8 +415,8 @@
     "image": "https://i.imgur.com/OnknYsG.png",
     "categorie": "T-SHIRT",
     "vendeur": "CCOO",
-    "lienAgent": "https://lien_agent_ici",
-    "lienSource": "https://lien_source_ici",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
     "acheteParStaff": false
   },
   {
@@ -445,8 +445,8 @@
     "image": "https://i.imgur.com/U3AJhMM.png",
     "categorie": "PULL",
     "vendeur": "CCOO",
-    "lienAgent": "https://lien_agent_ici",
-    "lienSource": "https://lien_source_ici",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
     "acheteParStaff": false
   },
   {
