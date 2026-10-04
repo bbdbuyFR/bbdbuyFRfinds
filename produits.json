@@ -412,8 +412,8 @@
   {
     "nom": "T-shirt tempo machine blanc",
     "prix": "12€",
-    "image": "https://i.imgur.com/LienImage.png",
-    "categorie": "",
+    "image": "https://i.imgur.com/OnknYsG.png",
+    "categorie": "T-SHIRT",
     "vendeur": "CCOO",
     "lienAgent": "https://lien_agent_ici",
     "lienSource": "https://lien_source_ici",
@@ -421,8 +421,8 @@
   },
   {
     "nom": "Phenom élite noir bouclier",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "prix": "20€",
+    "image": "https://i.imgur.com/3RcNo26.png",
     "categorie": "BAS",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -441,8 +441,8 @@
   },
   {
     "nom": "Pull nike tech noir",
-    "prix": "00€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "prix": "19€",
+    "image": "https://i.imgur.com/U3AJhMM.png",
     "categorie": "PULL",
     "vendeur": "CCOO",
     "lienAgent": "https://lien_agent_ici",
@@ -452,7 +452,7 @@
   {
     "nom": "Nike Haut Phenom bouclier bleu",
     "prix": "29€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "image": "https://i.imgur.com/fv1y6Uv.png",
     "categorie": "PULL",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -462,7 +462,7 @@
   {
     "nom": "Nike Haut Phenom bouclier noir",
     "prix": "29€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "image": "https://i.imgur.com/bE8D6Er.jpeg",
     "categorie": "PULL",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -472,7 +472,7 @@
   {
     "nom": "Nike Haut Phenom bouclier gris",
     "prix": "29€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "image": "https://i.imgur.com/jA4Wyb1.png",
     "categorie": "PULL",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
@@ -481,8 +481,8 @@
   },
   {
     "nom": "Phenom élite bleu",
-    "prix": "30€",
-    "image": "https://i.imgur.com/LienImage.png",
+    "prix": "21€",
+    "image": "https://i.imgur.com/xvy2pc8.png",
     "categorie": "BAS",
     "vendeur": "MR K",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
