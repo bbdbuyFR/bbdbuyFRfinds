@@ -724,5 +724,27 @@
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7822016004?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7822016004",
     "acheteParStaff": false
-  }
+  },
+  {
+    "nom": "Pull cp company",
+    "prix": "40€",
+    "image": "https://i.imgur.com/j0sJiiu.png",
+    "categorie": "PULL",
+    "vendeur": "cP REPS",
+    "tempsWH": "2-5j",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7822033538?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7822033538",
+    "acheteParStaff": false
+  },
+  {
+    "nom": "Pull cp company avec lunettes",
+    "prix": "42€",
+    "image": "https://i.imgur.com/TN4UAIf.png",
+    "categorie": "PULL",
+    "vendeur": "CP REPS",
+    "tempsWH": "2-5j",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7819099747?inviteCode=QLjYvT",
+    "lienSource": "https://weidian.com/item.html?itemID=7819099747",
+    "acheteParStaff": false
+  },
 ]
