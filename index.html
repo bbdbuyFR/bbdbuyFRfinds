@@ -53,15 +53,6 @@
             border-radius: 4px;
             text-transform: uppercase;
         }
-        .tag-wh {
-            background-color: #065f46;
-            color: #a7f3d0;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
         .tag-staff {
             background-color: #312e81;
             color: #a5b4fc;
@@ -243,7 +234,6 @@
                     card.className = "bg-[#1c1c1c] rounded-xl overflow-hidden border border-[#282828] cursor-pointer hover:border-[#444444] transition-all flex flex-col group h-full";
                     
                     const views = getClicks(p.nom);
-                    const tempsWH = p.tempsWH || "3-5j";
 
                     card.onclick = () => {
                         incrementClick(p.nom);
@@ -264,7 +254,6 @@
                             <div class="flex flex-wrap gap-1 mt-auto">
                                 <span class="tag-pill">${p.categorie.trim().toUpperCase()}</span>
                                 ${p.vendeur ? `<span class="tag-pill">${p.vendeur}</span>` : ''}
-                                <span class="tag-wh">⏱️ ${tempsWH}</span>
                                 ${p.acheteParStaff ? `<span class="tag-staff">Staff</span>` : ''}
                             </div>
                         </div>
@@ -278,13 +267,17 @@
 
         function openModal(p) {
             const views = getClicks(p.nom);
-            const tempsWH = p.tempsWH || "3-5j";
+            // Si tempsWH n'est pas rempli dans produits.json, valeur par défaut à 3-5J
+            const tempsWH = (p.tempsWH && p.tempsWH.trim() !== "") ? p.tempsWH.toUpperCase() : "3-5J";
+            const vendeurStr = p.vendeur && p.vendeur.trim() !== "" ? p.vendeur : "N/A";
+            
             document.getElementById('modal-title').innerText = p.nom;
-            document.getElementById('modal-meta').innerText = `${p.categorie.trim().toUpperCase()} • VENDEUR: ${p.vendeur} • ⏱️ WH: ${tempsWH} • 👁️ ${views} VUE${views > 1 ? 'S' : ''}`;
+            document.getElementById('modal-meta').innerText = `${p.categorie.trim().toUpperCase()} • VENDEUR: ${vendeurStr} • ⏱️ WH: ${tempsWH} • 👁️ ${views} VUE${views > 1 ? 'S' : ''}`;
             document.getElementById('modal-img').src = p.image;
             document.getElementById('modal-img').alt = p.nom;
             document.getElementById('modal-btn-agent').href = p.lienAgent;
             document.getElementById('modal-btn-source').href = p.lienSource;
+            
             const staffBox = document.getElementById('modal-staff-box');
             if (p.acheteParStaff) staffBox.classList.remove('hidden'); else staffBox.classList.add('hidden');
             document.getElementById('product-modal').classList.add('active');
