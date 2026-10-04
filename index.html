@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBDBUY FR FINDS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = { 
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
@@ -21,75 +21,74 @@
         .modal { display: none; }
         .modal.active { display: flex; }
         select {
-            background-repeat: no-repeat; background-position: right 8px center;
-            -webkit-appearance: none; appearance: none;
+            background-repeat: no-repeat; 
+            background-position: right 10px center;
+            -webkit-appearance: none; 
+            appearance: none;
         }
-        .price-tag {
-            background: #10b981;
-            color: white;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
+        /* Style inspiré du site Coslune */
+        .price-badge {
+            background-color: #10b981;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-size: 11px;
+            line-height: 1.2;
         }
-        .tag-categorie-flash {
-            background: rgba(56, 189, 248, 0.15);
+        .tag-pill {
+            background-color: #1e293b;
             color: #38bdf8;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
-        .tag-vendeur-flash {
-            background: rgba(251, 146, 60, 0.15);
-            color: #fb923c;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 6px;
+        .tag-staff {
+            background-color: #312e81;
+            color: #a5b4fc;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
-        .tag-staff-flash {
-            background: rgba(129, 140, 248, 0.15);
-            color: #818cf8;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-        .dark select { background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>"); }
     </style>
 </head>
-<body class="font-sans antialiased bg-white text-gray-900 dark:bg-[#0f172a] dark:text-gray-200 transition-colors duration-300">
+<body class="font-sans antialiased bg-[#121212] text-gray-200 min-h-screen">
 
-    <header class="bg-gray-100 dark:bg-[#1e293b] p-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-300 dark:border-gray-800 sticky top-0 z-40 gap-4">
+    <!-- En-tête -->
+    <header class="bg-[#181818] p-4 flex flex-col md:flex-row justify-between items-center border-b border-[#262626] sticky top-0 z-40 gap-4">
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
             <div class="text-center sm:text-left">
-                <span class="text-xl font-extrabold tracking-tight text-gray-900 dark:text-white block uppercase">BbdBuy FR Finds</span>
-                <span class="text-[10px] text-emerald-500 font-bold tracking-widest uppercase">Select Premium Links</span>
+                <span class="text-xl font-extrabold tracking-tight text-white block uppercase">BbdBuy FR Finds</span>
+                <span class="text-[10px] text-emerald-400 font-bold tracking-widest uppercase">Select Premium Links</span>
             </div>
             
             <div class="flex items-center space-x-3">
-                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-10 h-10 bg-[#5865F2] rounded-xl flex items-center justify-center text-white text-xl hover:scale-110 transition-all shadow-lg" title="Discord">
+                <a href="https://discord.gg/sFbvd6J6Kr" target="_blank" class="w-9 h-9 bg-[#5865F2] rounded-lg flex items-center justify-center text-white text-lg hover:opacity-90 transition-all" title="Discord">
                     <i class="fa-brands fa-discord"></i>
                 </a>
-                <a href="#" target="_blank" class="w-10 h-10 bg-black rounded-xl flex items-center justify-center text-white text-xl border border-gray-700 hover:scale-110 transition-all shadow-lg" title="TikTok">
+                <a href="#" target="_blank" class="w-9 h-9 bg-black rounded-lg flex items-center justify-center text-white text-lg border border-gray-800 hover:opacity-90 transition-all" title="TikTok">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
-                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-10 h-10 bg-[#ff9900] rounded-xl flex flex-col items-center justify-center text-black font-extrabold text-[9px] leading-tight hover:scale-110 transition-all shadow-lg" title="S'inscrire">
+                <a href="https://www.bbdbuyeu.com/register?inviteCode=QLjYvT" target="_blank" class="w-9 h-9 bg-[#ff9900] rounded-lg flex flex-col items-center justify-center text-black font-extrabold text-[8px] leading-tight hover:opacity-90 transition-all" title="S'inscrire">
                     <span>BBD</span><span class="bg-black text-[#ff9900] px-0.5 rounded-[2px]">BUY</span>
                 </a>
             </div>
         </div>
 
-        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center md:justify-end">
-            <input type="text" id="search" placeholder="Rechercher..." class="bg-white dark:bg-[#1e293b] text-sm border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-2 w-full sm:w-40 focus:ring-2 focus:ring-emerald-500 outline-none">
+        <!-- Filtres et Recherche -->
+        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-center md:justify-end">
+            <input type="text" id="search" placeholder="Rechercher..." class="bg-[#222222] text-white text-xs border border-[#333333] rounded-lg px-3 py-2 w-full sm:w-44 focus:ring-1 focus:ring-emerald-500 outline-none placeholder-gray-500">
             
-            <select id="filter-staff" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
+            <select id="filter-staff" class="bg-[#222222] text-gray-300 text-xs border border-[#333333] rounded-lg px-3 py-2 outline-none">
                 <option value="tous">Tous les articles</option>
                 <option value="staff">Acheté par le Staff</option>
             </select>
 
-            <select id="filter-vendeur" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
+            <select id="filter-vendeur" class="bg-[#222222] text-gray-300 text-xs border border-[#333333] rounded-lg px-3 py-2 outline-none">
                 <option value="tous">Vendeurs</option>
                 <option value="ccoo">CCOO</option>
                 <option value="jhy">JHY</option>
@@ -100,7 +99,7 @@
                 <option value="mr k">Mr K</option>
             </select>
 
-            <select id="filter-categorie" class="bg-white dark:bg-[#1e293b] text-xs border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 outline-none">
+            <select id="filter-categorie" class="bg-[#222222] text-gray-300 text-xs border border-[#333333] rounded-lg px-3 py-2 outline-none">
                 <option value="toutes">Catégories</option>
                 <option value="PULL">PULL</option>
                 <option value="BAS">BAS</option>
@@ -110,62 +109,43 @@
                 <option value="T-SHIRT">T-SHIRT</option>
                 <option value="MANTEAU">MANTEAU</option>
             </select>
-
-            <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-gray-200 dark:bg-[#1e293b] border border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all">
-                <i id="theme-icon" class="text-lg"></i>
-            </button>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto p-6 min-h-screen">
-        <div id="content-area" class="space-y-12"></div>
+    <!-- Zone Principale -->
+    <main class="max-w-[1400px] mx-auto p-4 md:p-6">
+        <div id="content-area" class="space-y-10"></div>
     </main>
 
-    <div id="product-modal" class="modal fixed inset-0 bg-black/90 items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-[#1e293b] p-8 rounded-3xl max-w-lg w-full text-center relative border border-gray-200 dark:border-gray-800 shadow-2xl">
-            <h3 id="modal-title" class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2"></h3>
-            <p id="modal-meta" class="text-xs text-gray-500 font-bold mb-8 tracking-widest"></p>
+    <!-- Modal Produit -->
+    <div id="product-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-sm items-center justify-center z-50 p-4">
+        <div class="bg-[#1e1e1e] p-6 rounded-2xl max-w-md w-full text-center relative border border-[#333333] shadow-2xl">
+            <h3 id="modal-title" class="text-xl font-bold text-white mb-1"></h3>
+            <p id="modal-meta" class="text-[11px] text-gray-400 font-semibold mb-6 uppercase tracking-wider"></p>
             
-            <div id="modal-staff-box" class="hidden mb-8 p-5 bg-[#2563eb1a] border-l-4 border-blue-500 rounded-r-xl text-left flex gap-4">
-                <div class="bg-[#5865F2] w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 shadow-lg">
-                    <i class="fa-brands fa-discord"></i>
+            <div id="modal-staff-box" class="hidden mb-6 p-4 bg-indigo-950/40 border-l-4 border-indigo-500 rounded-r-lg text-left flex gap-3">
+                <div class="bg-[#5865F2] w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0">
+                    <i class="fa-brands fa-discord text-sm"></i>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-sm font-extrabold text-blue-500 uppercase tracking-tight">Article déjà acheté et reçu par le Staff !</h4>
-                    <p class="text-[11px] text-gray-800 dark:text-gray-300 leading-relaxed font-medium">
-                        Nous avons cet article en main ! Rejoignez notre Discord et <strong>mentionnez un membre du staff</strong> pour voir des photos portées ou sous différents angles.
+                    <h4 class="text-xs font-bold text-indigo-400 uppercase">Article vérifié par le Staff</h4>
+                    <p class="text-[11px] text-gray-300 leading-snug">
+                        Rejoignez notre Discord et mentionnez l'équipe pour obtenir des photos réelles de cet article.
                     </p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a id="modal-btn-agent" href="#" target="_blank" class="bg-emerald-500 text-white font-extrabold py-4 rounded-2xl hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20">Lien Agent BBD</a>
-                <a id="modal-btn-source" href="#" target="_blank" class="bg-gray-100 dark:bg-[#0f172a] text-gray-900 dark:text-white font-extrabold py-4 rounded-2xl border border-gray-300 dark:border-gray-700 hover:bg-gray-200 transition-all">Lien Source (Weidian)</a>
+            <div class="grid grid-cols-2 gap-3">
+                <a id="modal-btn-agent" href="#" target="_blank" class="bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl hover:bg-emerald-500 transition-all">Lien Agent BBD</a>
+                <a id="modal-btn-source" href="#" target="_blank" class="bg-[#2a2a2a] text-gray-200 font-bold text-xs py-3 rounded-xl border border-[#3e3e3e] hover:bg-[#333333] transition-all">Lien Source</a>
             </div>
             
-            <button onclick="closeProductModal()" class="mt-8 text-xs text-gray-500 hover:text-red-500 font-black uppercase transition-colors tracking-tighter">Fermer</button>
+            <button onclick="closeProductModal()" class="mt-6 text-xs text-gray-500 hover:text-white font-semibold uppercase tracking-wider transition-colors">Fermer</button>
         </div>
     </div>
 
     <script>
         let tousLesProduits = [];
-        const themeBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-
-        function updateThemeIcon() {
-            if (html.classList.contains('dark')) {
-                themeIcon.className = 'fa-solid fa-sun text-yellow-400';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.className = 'fa-solid fa-moon text-blue-900';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        if (savedTheme === 'light') html.classList.remove('dark');
-        updateThemeIcon();
-        themeBtn.addEventListener('click', () => { html.classList.toggle('dark'); updateThemeIcon(); });
 
         fetch('produits.json')
             .then(res => res.json())
@@ -205,32 +185,35 @@
 
             for (const name in groups) {
                 const section = document.createElement('section');
-                section.innerHTML = `<h2 class="text-xs font-black mb-4 text-emerald-500 uppercase tracking-[0.3em]">${name}</h2>`;
+                section.innerHTML = `<h2 class="text-xs font-extrabold mb-3 text-emerald-400 uppercase tracking-widest">${name}</h2>`;
+                
+                // Grille responsive 2 colonnes sur mobile, jusqu'à 7 colonnes sur grands écrans
                 const grid = document.createElement('div');
-                grid.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4";
+                grid.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3";
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    card.className = "bg-gray-50 dark:bg-[#1e293b] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 cursor-pointer hover:scale-[1.02] transition-all flex flex-col shadow-sm group";
+                    card.className = "bg-[#1c1c1c] rounded-xl overflow-hidden border border-[#282828] cursor-pointer hover:border-[#444444] transition-all flex flex-col group";
                     card.onclick = () => openModal(p);
                     
                     card.innerHTML = `
-                        <div class="relative aspect-[4/3] w-full overflow-hidden shrink-0 bg-gray-900">
-                            <span class="absolute top-2 left-2 price-tag shadow-md z-10">${p.prix}</span>
-                            <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <div class="relative aspect-square bg-[#0d0d0d] flex items-center justify-center overflow-hidden shrink-0 p-1.5">
+                            <span class="absolute top-2 left-2 price-badge z-10">${p.prix}</span>
+                            <img src="${p.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.nom}">
                         </div>
-                        <div class="p-3 flex-1 flex flex-col justify-between overflow-hidden">
-                            <h4 class="font-bold text-[13px] text-gray-900 dark:text-white leading-tight line-clamp-2">${p.nom}</h4>
-                            <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
-                                <span class="tag-categorie-flash">${p.categorie.trim().toUpperCase()}</span>
-                                ${p.vendeur ? `<span class="tag-vendeur-flash">${p.vendeur}</span>` : ''}
-                                ${p.acheteParStaff ? `<span class="tag-staff-flash">Staff</span>` : ''}
+                        <div class="p-2.5 flex-1 flex flex-col justify-between">
+                            <h4 class="font-semibold text-xs text-gray-100 leading-tight line-clamp-2 mb-2 group-hover:text-emerald-400 transition-colors">${p.nom}</h4>
+                            <div class="flex flex-wrap gap-1 mt-auto">
+                                <span class="tag-pill">${p.categorie.trim().toUpperCase()}</span>
+                                ${p.vendeur ? `<span class="tag-pill">${p.vendeur}</span>` : ''}
+                                ${p.acheteParStaff ? `<span class="tag-staff">Staff</span>` : ''}
                             </div>
                         </div>
                     `;
                     grid.appendChild(card);
                 });
-                section.appendChild(grid); area.appendChild(section);
+                section.appendChild(grid); 
+                area.appendChild(section);
             }
         }
 
@@ -244,7 +227,9 @@
             document.getElementById('product-modal').classList.add('active');
         }
 
-        function closeProductModal() { document.getElementById('product-modal').classList.remove('active'); }
+        function closeProductModal() { 
+            document.getElementById('product-modal').classList.remove('active'); 
+        }
 
         document.getElementById('search').addEventListener('input', updateGrid);
         document.getElementById('filter-staff').addEventListener('change', updateGrid);
