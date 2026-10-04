@@ -116,8 +116,8 @@
                 <option value="BAS">BAS</option>
                 <option value="SHORT">SHORT</option>
                 <option value="VESTE">VESTE</option>
-                <option value="CHAUSSURE">CHAUSSURE</option>
-                <option value="ACCESSOIRE">ACCESSOIRE</option>
+                <option value="CHAUSSURES">CHAUSSURES</option>
+                <option value="ACCESSOIRES">ACCESSOIRES</option>
                 <option value="T-SHIRT">T-SHIRT</option>
                 <option value="DOUDOUNE">DOUDOUNE</option>
             </select>
@@ -208,13 +208,7 @@
                 const matchSearch = p.nom.toLowerCase().includes(search);
                 const matchStaff = (staff === 'tous') || (p.acheteParStaff === true);
                 const matchVendor = (vendor === 'tous') || (p.vendeur.toLowerCase() === vendor);
-                
-                // Flexible pour gérer "CHAUSSURE" / "CHAUSSURES" ou "ACCESSOIRE" / "ACCESSOIRES"
-                const matchCat = (cat === 'TOUTES') || 
-                                 (itemCat === cat) || 
-                                 (itemCat.startsWith(cat)) || 
-                                 (cat.startsWith(itemCat));
-
+                const matchCat = (cat === 'TOUTES') || (itemCat === cat);
                 return matchSearch && matchStaff && matchVendor && matchCat;
             });
 
