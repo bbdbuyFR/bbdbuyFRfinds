@@ -39,8 +39,8 @@
     "categorie": "BAS",
     "vendeur": "MR K",
     "tempsWH": "1-2j",
-    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvThttps://shop1855155515.v.weidian.com/item.html?itemID=7788490106",
-    "lienSource": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
+    "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788490106?inviteCode=QLjYvT",
+    "lienSource": "https://shop1855155515.v.weidian.com/item.html?itemID=7788490106",
     "acheteParStaff": true
   },
   {
@@ -172,7 +172,7 @@
     "vendeur": "CCOO",
     "tempsWH": "1-3j",
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7788622214?inviteCode=QLjYvT",
-    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d ",
+    "lienSource": "https://weidian.com/item.html?itemID=7788622214&spider_token=cf5d",
     "acheteParStaff": false
   },
   {
@@ -638,7 +638,7 @@
     "acheteParStaff": false
   },
   {
-    "nom": "Cardigan  cp company",
+    "nom": "Cardigan cp company",
     "prix": "79€",
     "image": "https://i.imgur.com/LB6XWJY.png",
     "categorie": "VESTE",
@@ -746,5 +746,5 @@
     "lienAgent": "https://www.bbdbuyeu.com/goods/WEIDIAN/7819099747?inviteCode=QLjYvT",
     "lienSource": "https://weidian.com/item.html?itemID=7819099747",
     "acheteParStaff": false
-  },
+  }
 ]
