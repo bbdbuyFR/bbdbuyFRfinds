@@ -26,7 +26,6 @@
             -webkit-appearance: none; 
             appearance: none;
         }
-        /* Style inspiré du site Coslune */
         .price-badge {
             background-color: #10b981;
             color: #ffffff;
@@ -119,11 +118,16 @@
 
     <!-- Modal Produit -->
     <div id="product-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-sm items-center justify-center z-50 p-4">
-        <div class="bg-[#1e1e1e] p-6 rounded-2xl max-w-md w-full text-center relative border border-[#333333] shadow-2xl">
+        <div class="bg-[#1e1e1e] p-6 rounded-2xl max-w-lg w-full text-center relative border border-[#333333] shadow-2xl max-h-[90vh] overflow-y-auto">
             <h3 id="modal-title" class="text-xl font-bold text-white mb-1"></h3>
-            <p id="modal-meta" class="text-[11px] text-gray-400 font-semibold mb-6 uppercase tracking-wider"></p>
+            <p id="modal-meta" class="text-[11px] text-gray-400 font-semibold mb-4 uppercase tracking-wider"></p>
             
-            <div id="modal-staff-box" class="hidden mb-6 p-4 bg-indigo-950/40 border-l-4 border-indigo-500 rounded-r-lg text-left flex gap-3">
+            <!-- Image complète du produit -->
+            <div class="w-full bg-[#121212] rounded-xl overflow-hidden mb-5 border border-[#2a2a2a] max-h-[350px] flex items-center justify-center">
+                <img id="modal-img" src="" alt="Image produit" class="w-full h-full max-h-[350px] object-contain">
+            </div>
+
+            <div id="modal-staff-box" class="hidden mb-5 p-4 bg-indigo-950/40 border-l-4 border-indigo-500 rounded-r-lg text-left flex gap-3">
                 <div class="bg-[#5865F2] w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0">
                     <i class="fa-brands fa-discord text-sm"></i>
                 </div>
@@ -136,11 +140,11 @@
             </div>
 
             <div class="grid grid-cols-2 gap-3">
-                <a id="modal-btn-agent" href="#" target="_blank" class="bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl hover:bg-emerald-500 transition-all">Lien Agent BBD</a>
-                <a id="modal-btn-source" href="#" target="_blank" class="bg-[#2a2a2a] text-gray-200 font-bold text-xs py-3 rounded-xl border border-[#3e3e3e] hover:bg-[#333333] transition-all">Lien Source</a>
+                <a id="modal-btn-agent" href="#" target="_blank" class="bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl hover:bg-emerald-500 transition-all flex items-center justify-center">Lien Agent BBD</a>
+                <a id="modal-btn-source" href="#" target="_blank" class="bg-[#2a2a2a] text-gray-200 font-bold text-xs py-3 rounded-xl border border-[#3e3e3e] hover:bg-[#333333] transition-all flex items-center justify-center">Lien Source</a>
             </div>
             
-            <button onclick="closeProductModal()" class="mt-6 text-xs text-gray-500 hover:text-white font-semibold uppercase tracking-wider transition-colors">Fermer</button>
+            <button onclick="closeProductModal()" class="mt-6 text-xs text-gray-400 hover:text-white font-bold uppercase tracking-widest transition-colors inline-block select-none">Fermer</button>
         </div>
     </div>
 
@@ -219,6 +223,8 @@
         function openModal(p) {
             document.getElementById('modal-title').innerText = p.nom;
             document.getElementById('modal-meta').innerText = `${p.categorie.trim().toUpperCase()} • VENDEUR: ${p.vendeur}`;
+            document.getElementById('modal-img').src = p.image;
+            document.getElementById('modal-img').alt = p.nom;
             document.getElementById('modal-btn-agent').href = p.lienAgent;
             document.getElementById('modal-btn-source').href = p.lienSource;
             const staffBox = document.getElementById('modal-staff-box');
