@@ -267,9 +267,11 @@
 
         function openModal(p) {
             const views = getClicks(p.nom);
-            // Si tempsWH n'est pas rempli dans produits.json, valeur par défaut à 3-5J
-            const tempsWH = (p.tempsWH && p.tempsWH.trim() !== "") ? p.tempsWH.toUpperCase() : "3-5J";
-            const vendeurStr = p.vendeur && p.vendeur.trim() !== "" ? p.vendeur : "N/A";
+            
+            // Récupère uniquement la valeur définie dans la propriété "tempsWH" de votre fichier produits.json
+            // Si la valeur est absente ou vide, on utilise "3-5J" par défaut
+            const tempsWH = (p.tempsWH && String(p.tempsWH).trim() !== "") ? String(p.tempsWH).trim().toUpperCase() : "3-5J";
+            const vendeurStr = (p.vendeur && p.vendeur.trim() !== "") ? p.vendeur : "N/A";
             
             document.getElementById('modal-title').innerText = p.nom;
             document.getElementById('modal-meta').innerText = `${p.categorie.trim().toUpperCase()} • VENDEUR: ${vendeurStr} • ⏱️ WH: ${tempsWH} • 👁️ ${views} VUE${views > 1 ? 'S' : ''}`;
