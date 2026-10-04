@@ -187,21 +187,20 @@
                 const section = document.createElement('section');
                 section.innerHTML = `<h2 class="text-xs font-extrabold mb-3 text-emerald-400 uppercase tracking-widest">${name}</h2>`;
                 
-                // Grille responsive 2 colonnes sur mobile, jusqu'à 7 colonnes sur grands écrans
                 const grid = document.createElement('div');
                 grid.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3";
 
                 groups[name].forEach(p => {
                     const card = document.createElement('div');
-                    card.className = "bg-[#1c1c1c] rounded-xl overflow-hidden border border-[#282828] cursor-pointer hover:border-[#444444] transition-all flex flex-col group";
+                    card.className = "bg-[#1c1c1c] rounded-xl overflow-hidden border border-[#282828] cursor-pointer hover:border-[#444444] transition-all flex flex-col group h-full";
                     card.onclick = () => openModal(p);
                     
                     card.innerHTML = `
-                        <div class="relative aspect-square bg-[#0d0d0d] flex items-center justify-center overflow-hidden shrink-0 p-1.5">
-                            <span class="absolute top-2 left-2 price-badge z-10">${p.prix}</span>
-                            <img src="${p.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.nom}">
+                        <div class="relative aspect-[4/3] w-full bg-[#1c1c1c] overflow-hidden shrink-0">
+                            <span class="absolute top-2 left-2 price-badge z-10 shadow-md">${p.prix}</span>
+                            <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.nom}">
                         </div>
-                        <div class="p-2.5 flex-1 flex flex-col justify-between">
+                        <div class="p-2.5 flex-1 flex flex-col justify-between bg-[#1c1c1c]">
                             <h4 class="font-semibold text-xs text-gray-100 leading-tight line-clamp-2 mb-2 group-hover:text-emerald-400 transition-colors">${p.nom}</h4>
                             <div class="flex flex-wrap gap-1 mt-auto">
                                 <span class="tag-pill">${p.categorie.trim().toUpperCase()}</span>
